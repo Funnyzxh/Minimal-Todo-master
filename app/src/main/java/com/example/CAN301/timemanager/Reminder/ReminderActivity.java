@@ -1,10 +1,10 @@
-package com.example.avjindersinghsekhon.minimaltodo.Reminder;
+package com.example.CAN301.timemanager.Reminder;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.example.avjindersinghsekhon.minimaltodo.AppDefault.AppDefaultActivity;
-import com.example.avjindersinghsekhon.minimaltodo.R;
+import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
+import com.example.CAN301.timemanager.R;
 
 public class ReminderActivity extends AppDefaultActivity {
 

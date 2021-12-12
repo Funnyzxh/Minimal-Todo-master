@@ -1,10 +1,10 @@
-package com.example.avjindersinghsekhon.minimaltodo.Utility;
+package com.example.CAN301.timemanager.Utility;
 
 import android.app.IntentService;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.example.avjindersinghsekhon.minimaltodo.Main.MainFragment;
+import com.example.CAN301.timemanager.Main.MainFragment;
 
 import java.util.ArrayList;
 import java.util.UUID;

@@ -5,14 +5,14 @@ android {
         release {
             keyAlias ''
             keyPassword ''
-            storeFile file('/Users/avjindersinghsekhon/androidapps.jks')
+            storeFile file('/Users/CAN301/androidapps.jks')
             storePassword ''
         }
     }
     compileSdkVersion 23
 //    buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "com.avjindersinghsekhon.minimaltodo"
+        applicationId "com.CAN301.timemanager"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 3

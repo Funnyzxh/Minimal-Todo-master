@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Reminder;
+package com.example.CAN301.timemanager.Reminder;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,13 +16,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-import com.example.avjindersinghsekhon.minimaltodo.AppDefault.AppDefaultFragment;
-import com.example.avjindersinghsekhon.minimaltodo.Main.MainActivity;
-import com.example.avjindersinghsekhon.minimaltodo.Main.MainFragment;
-import com.example.avjindersinghsekhon.minimaltodo.R;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.StoreRetrieveData;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.ToDoItem;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.TodoNotificationService;
+import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
+import com.example.CAN301.timemanager.Main.MainActivity;
+import com.example.CAN301.timemanager.Main.MainFragment;
+import com.example.CAN301.timemanager.R;
+import com.example.CAN301.timemanager.Utility.StoreRetrieveData;
+import com.example.CAN301.timemanager.Utility.ToDoItem;
+import com.example.CAN301.timemanager.Utility.TodoNotificationService;
 
 import org.json.JSONException;
 

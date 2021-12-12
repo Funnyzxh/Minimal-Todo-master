@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Main;
+package com.example.CAN301.timemanager.Main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-import com.example.avjindersinghsekhon.minimaltodo.AppDefault.AppDefaultActivity;
-import com.example.avjindersinghsekhon.minimaltodo.R;
-import com.example.avjindersinghsekhon.minimaltodo.Settings.SettingsActivity;
+import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
+import com.example.CAN301.timemanager.R;
+import com.example.CAN301.timemanager.Settings.SettingsActivity;
 
 public class MainActivity extends AppDefaultActivity {
 

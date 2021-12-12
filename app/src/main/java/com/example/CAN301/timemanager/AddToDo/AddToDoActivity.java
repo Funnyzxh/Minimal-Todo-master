@@ -1,11 +1,11 @@
-package com.example.avjindersinghsekhon.minimaltodo.AddToDo;
+package com.example.CAN301.timemanager.AddToDo;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
-import com.example.avjindersinghsekhon.minimaltodo.AppDefault.AppDefaultActivity;
-import com.example.avjindersinghsekhon.minimaltodo.R;
+import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
+import com.example.CAN301.timemanager.R;
 
 public class AddToDoActivity extends AppDefaultActivity {
     @SuppressWarnings("deprecation")

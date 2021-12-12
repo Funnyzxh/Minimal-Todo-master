@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Main;
+package com.example.CAN301.timemanager.Main;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;

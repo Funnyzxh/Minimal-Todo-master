@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.AppDefault;
+package com.example.CAN301.timemanager.AppDefault;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

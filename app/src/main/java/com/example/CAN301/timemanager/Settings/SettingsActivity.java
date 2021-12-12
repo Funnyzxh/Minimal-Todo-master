@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Settings;
+package com.example.CAN301.timemanager.Settings;
 
 import android.app.FragmentManager;
 import android.graphics.Color;
@@ -11,8 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 
-import com.example.avjindersinghsekhon.minimaltodo.Main.MainFragment;
-import com.example.avjindersinghsekhon.minimaltodo.R;
+import com.example.CAN301.timemanager.Main.MainFragment;
+import com.example.CAN301.timemanager.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

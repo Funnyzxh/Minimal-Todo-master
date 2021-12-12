@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Settings;
+package com.example.CAN301.timemanager.Settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,9 +7,9 @@ import android.preference.CheckBoxPreference;
 import android.preference.PreferenceFragment;
 
 
-import com.example.avjindersinghsekhon.minimaltodo.Main.MainFragment;
-import com.example.avjindersinghsekhon.minimaltodo.R;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.PreferenceKeys;
+import com.example.CAN301.timemanager.Main.MainFragment;
+import com.example.CAN301.timemanager.R;
+import com.example.CAN301.timemanager.Utility.PreferenceKeys;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 

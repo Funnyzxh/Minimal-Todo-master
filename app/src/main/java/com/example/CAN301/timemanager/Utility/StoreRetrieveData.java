@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Utility;
+package com.example.CAN301.timemanager.Utility;
 
 import android.content.Context;
 

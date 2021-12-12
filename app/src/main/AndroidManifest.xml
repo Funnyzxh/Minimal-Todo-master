@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.avjindersinghsekhon.minimaltodo" >
+    package="com.example.CAN301.timemanager" >
 
 
     <!--We set theme to DarkTheme because when the app opens it shows
@@ -14,7 +14,7 @@
         android:theme="@style/CustomStyle.DarkTheme"
         >
         <activity
-            android:name=".Main.MainActivity"
+            android:name="com.example.CAN301.timemanager.Main.MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:label="@string/app_name" >
@@ -25,23 +25,23 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddToDo.AddToDoActivity"
+        <activity android:name="com.example.CAN301.timemanager.AddToDo.AddToDoActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".Main.MainActivity"
+            android:parentActivityName="com.example.CAN301.timemanager.Main.MainActivity"
             />
 
 
 
-        <activity android:name=".Reminder.ReminderActivity"
+        <activity android:name="com.example.CAN301.timemanager.Reminder.ReminderActivity"
             android:label="@string/app_name"
             />
 
-        <service android:name=".Utility.TodoNotificationService"
+        <service android:name="com.example.CAN301.timemanager.Utility.TodoNotificationService"
             />
-        <service android:name=".Utility.DeleteNotificationService"
+        <service android:name="com.example.CAN301.timemanager.Utility.DeleteNotificationService"
             />
-        <activity android:name=".Settings.SettingsActivity"
-            android:parentActivityName=".Main.MainActivity"
+        <activity android:name="com.example.CAN301.timemanager.Settings.SettingsActivity"
+            android:parentActivityName="com.example.CAN301.timemanager.Main.MainActivity"
 
             />
 

@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Utility;
+package com.example.CAN301.timemanager.Utility;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -8,8 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.avjindersinghsekhon.minimaltodo.R;
-import com.example.avjindersinghsekhon.minimaltodo.Reminder.ReminderActivity;
+import com.example.CAN301.timemanager.R;
+import com.example.CAN301.timemanager.Reminder.ReminderActivity;
 
 import java.util.UUID;
 

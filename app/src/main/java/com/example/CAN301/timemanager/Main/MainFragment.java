@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Main;
+package com.example.CAN301.timemanager.Main;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -29,18 +29,18 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
-import com.example.avjindersinghsekhon.minimaltodo.AddToDo.AddToDoActivity;
-import com.example.avjindersinghsekhon.minimaltodo.AddToDo.AddToDoFragment;
+import com.example.CAN301.timemanager.AddToDo.AddToDoActivity;
+import com.example.CAN301.timemanager.AddToDo.AddToDoFragment;
 
-import com.example.avjindersinghsekhon.minimaltodo.AppDefault.AppDefaultFragment;
-import com.example.avjindersinghsekhon.minimaltodo.R;
-import com.example.avjindersinghsekhon.minimaltodo.Reminder.ReminderFragment;
-import com.example.avjindersinghsekhon.minimaltodo.Settings.SettingsActivity;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.ItemTouchHelperClass;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.RecyclerViewEmptySupport;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.StoreRetrieveData;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.ToDoItem;
-import com.example.avjindersinghsekhon.minimaltodo.Utility.TodoNotificationService;
+import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
+import com.example.CAN301.timemanager.R;
+import com.example.CAN301.timemanager.Reminder.ReminderFragment;
+import com.example.CAN301.timemanager.Settings.SettingsActivity;
+import com.example.CAN301.timemanager.Utility.ItemTouchHelperClass;
+import com.example.CAN301.timemanager.Utility.RecyclerViewEmptySupport;
+import com.example.CAN301.timemanager.Utility.StoreRetrieveData;
+import com.example.CAN301.timemanager.Utility.ToDoItem;
+import com.example.CAN301.timemanager.Utility.TodoNotificationService;
 
 import org.json.JSONException;
 
@@ -48,6 +48,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.content.Context.ALARM_SERVICE;
@@ -58,13 +59,13 @@ public class MainFragment extends AppDefaultFragment {
     private FloatingActionButton mAddToDoItemFAB;
     private ArrayList<ToDoItem> mToDoItemsArrayList;
     private CoordinatorLayout mCoordLayout;
-    public static final String TODOITEM = "com.avjindersinghsekhon.com.avjindersinghsekhon.minimaltodo.MainActivity";
+    public static final String TODOITEM = "com.CAN301.com.CAN301.timemanager.MainActivity";
     private MainFragment.BasicListAdapter adapter;
     private static final int REQUEST_ID_TODO_ITEM = 100;
     private ToDoItem mJustDeletedToDoItem;
     private int mIndexOfDeletedToDoItem;
-    public static final String DATE_TIME_FORMAT_12_HOUR = "MMM d, yyyy  h:mm a";
-    public static final String DATE_TIME_FORMAT_24_HOUR = "MMM d, yyyy  k:mm";
+    public static final String DATE_TIME_FORMAT_12_HOUR = "MMM d,yyyy h:mm a";
+    public static final String DATE_TIME_FORMAT_24_HOUR = "MMM d,yyyy k:mm";
     public static final String FILENAME = "todoitems.json";
     private StoreRetrieveData storeRetrieveData;
     public ItemTouchHelper itemTouchHelper;
@@ -150,31 +151,7 @@ public class MainFragment extends AppDefaultFragment {
                 ToDoItem item = new ToDoItem("","", false, null);
                 int color = ColorGenerator.MATERIAL.getRandomColor();
                 item.setTodoColor(color);
-                //noinspection ResourceType
-//                String color = getResources().getString(R.color.primary_ligher);
                 newTodo.putExtra(TODOITEM, item);
-//                View decorView = getWindow().getDecorView();
-//                View navView= decorView.findViewById(android.R.id.navigationBarBackground);
-//                View statusView = decorView.findViewById(android.R.id.statusBarBackground);
-//                Pair<View, String> navBar ;
-//                if(navView!=null){
-//                    navBar = Pair.create(navView, navView.getTransitionName());
-//                }
-//                else{
-//                    navBar = null;
-//                }
-//                Pair<View, String> statusBar= Pair.create(statusView, statusView.getTransitionName());
-//                ActivityOptions options;
-//                if(navBar!=null){
-//                    options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, navBar, statusBar);
-//                }
-//                else{
-//                    options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, statusBar);
-//                }
-
-//                startActivity(new Intent(MainActivity.this, TestLayout.class), options.toBundle());
-//                startActivityForResult(newTodo, REQUEST_ID_TODO_ITEM, options.toBundle());
-
                 startActivityForResult(newTodo, REQUEST_ID_TODO_ITEM);
             }
         });
@@ -417,15 +394,6 @@ public class MainFragment extends AppDefaultFragment {
     }
 
 
-    public void makeUpItems(ArrayList<ToDoItem> items, int len) {
-        for (String testString : testStrings) {
-            ToDoItem item = new ToDoItem(testString,testString, false, new Date());
-            //noinspection ResourceType
-//            item.setTodoColor(getResources().getString(R.color.red_secondary));
-            items.add(item);
-        }
-
-    }
 
     public class BasicListAdapter extends RecyclerView.Adapter<BasicListAdapter.ViewHolder> implements ItemTouchHelperClass.ItemTouchHelperAdapter {
         private ArrayList<ToDoItem> items;
@@ -475,6 +443,35 @@ public class MainFragment extends AppDefaultFragment {
                     }).show();
         }
 
+        public int strMonthToInt(String mon){
+            if(mon.equals("Jan")){
+                return 1;
+            }else if(mon.equals("Feb")){
+                return 2;
+            }else if(mon.equals("Mar")){
+                return 3;
+            }else if(mon.equals("Apr")){
+                return 4;
+            }else if(mon.equals("May")){
+                return 5;
+            }else if(mon.equals("Jun")){
+                return 6;
+            }else if(mon.equals("Jul")){
+                return 7;
+            }else if(mon.equals("Aug")){
+                return 8;
+            }else if(mon.equals("Sep")){
+                return 9;
+            }else if(mon.equals("Oct")){
+                return 10;
+            }else if(mon.equals("Nov")){
+                return 11;
+            }else if(mon.equals("Dec")){
+                return 12;
+            }
+            return 0;
+        }
+
         @Override
         public BasicListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_circle_try, parent, false);
@@ -511,16 +508,6 @@ public class MainFragment extends AppDefaultFragment {
             }
             holder.mToDoTextview.setText(item.getToDoText());
             holder.mToDoTextview.setTextColor(todoTextColor);
-//            holder.mColorTextView.setBackgroundColor(Color.parseColor(item.getTodoColor()));
-
-//            TextDrawable myDrawable = TextDrawable.builder().buildRoundRect(item.getToDoText().substring(0,1),Color.RED, 10);
-            //We check if holder.color is set or not
-//            if(item.getTodoColor() == null){
-//                ColorGenerator generator = ColorGenerator.MATERIAL;
-//                int color = generator.getRandomColor();
-//                item.setTodoColor(color+"");
-//            }
-//            Log.d("OskarSchindler", "Color: "+item.getTodoColor());
             TextDrawable myDrawable = TextDrawable.builder().beginConfig()
                     .textColor(Color.WHITE)
                     .useFont(Typeface.DEFAULT)
@@ -528,19 +515,59 @@ public class MainFragment extends AppDefaultFragment {
                     .endConfig()
                     .buildRound(item.getToDoText().substring(0, 1), item.getTodoColor());
 
-//            TextDrawable myDrawable = TextDrawable.builder().buildRound(item.getToDoText().substring(0,1),holder.color);
             holder.mColorImageView.setImageDrawable(myDrawable);
             if (item.getToDoDate() != null) {
-                String timeToShow;
+                String targetTime;
+                String[] array1 = new String[3];
+                String[] array2 = new String[2];
+                String[] array3 = new String[2];
                 if (android.text.format.DateFormat.is24HourFormat(getContext())) {
-                    timeToShow = AddToDoFragment.formatDate(MainFragment.DATE_TIME_FORMAT_24_HOUR, item.getToDoDate());
+                    targetTime = AddToDoFragment.formatDate(MainFragment.DATE_TIME_FORMAT_24_HOUR, item.getToDoDate());
                 } else {
-                    timeToShow = AddToDoFragment.formatDate(MainFragment.DATE_TIME_FORMAT_12_HOUR, item.getToDoDate());
+                    targetTime = AddToDoFragment.formatDate(MainFragment.DATE_TIME_FORMAT_12_HOUR, item.getToDoDate());
                 }
-                holder.mTimeTextView.setText(timeToShow);
+                Date targetDate = item.getToDoDate();
+                long targetMilliseconds = targetDate.getTime();
+                Date currentDate = new Date(System.currentTimeMillis());
+                long currentMilliseconds = currentDate.getTime();
+                long millsecondsRemain = targetMilliseconds - currentMilliseconds;
+
+                long remainDay = TimeUnit.MILLISECONDS.toDays(millsecondsRemain);
+
+                long remainHours = TimeUnit.MILLISECONDS.toHours(millsecondsRemain)
+                        - TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(millsecondsRemain));
+                long remainMinutes = TimeUnit.MILLISECONDS.toMinutes(millsecondsRemain)
+                        - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millsecondsRemain));
+
+                holder.mTimeTextView.setText("Date: " + targetTime + "      " + "Still have: " + remainDay + "days " + remainHours + "h " + remainMinutes + "mins");
+
             }
 
 
+        }
+
+        public int yearToDay(int m){
+            int day = 0;
+            for(int i=2020; i<=m; i++){
+                if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0){
+                    day+=1;
+                }
+                day+=365;
+            }
+            return day;
+        }
+
+        public int monthToDay(int m){
+            int day = 0;
+            for(int i=1; i<=m; i++){
+                day += 30;
+                if(i==1 | i==3 | i==5 | i==7 |i==8 | i==10 | i==12){
+                    day +=1;
+                }else if(i==2){
+                    day-=2;
+                }
+            }
+            return day;
         }
 
         @Override
@@ -621,23 +648,6 @@ public class MainFragment extends AppDefaultFragment {
         mRecyclerView.removeOnScrollListener(customRecyclerScrollViewListener);
     }
 
-
-    //    public void setUpTransitions(){
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-//            Transition enterT = new Slide(Gravity.RIGHT);
-//            enterT.setDuration(500);
-//
-//            Transition exitT = new Slide(Gravity.LEFT);
-//            exitT.setDuration(300);
-//
-//            Fade fade = new Fade();
-//            fade.setDuration(500);
-//
-//            getWindow().setExitTransition(fade);
-//            getWindow().setReenterTransition(fade);
-//
-//        }
-//    }
     @Override
     protected int layoutRes() {
         return R.layout.fragment_main;

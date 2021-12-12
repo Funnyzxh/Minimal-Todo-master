@@ -1,4 +1,4 @@
-package com.example.avjindersinghsekhon.minimaltodo.Utility;
+package com.example.CAN301.timemanager.Utility;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
