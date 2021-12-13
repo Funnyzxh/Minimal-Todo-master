@@ -1,6 +1,7 @@
 package com.example.CAN301.timemanager.Chart;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -10,11 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.CAN301.timemanager.Chart.ChartFragment;
-import com.example.CAN301.timemanager.Main.MainFragment;
+import com.example.CAN301.timemanager.ChartShow.ShowMonthActivity;
+import com.example.CAN301.timemanager.ChartShow.ShowWeekActivity;
+import com.example.CAN301.timemanager.ChartShow.ShowYearActivity;
 import com.example.CAN301.timemanager.R;
 
-public class ChartActivity extends AppCompatActivity{
+public class ChartActivity extends AppCompatActivity implements ChartFragment.callBackValue {
 
 
 
@@ -57,6 +59,25 @@ public class ChartActivity extends AppCompatActivity{
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void setBtnState(int i) {
+        if(i==1){
+            Intent intent = new Intent(this, ShowWeekActivity.class);
+            startActivity(intent);
+
+        }else if(i==2){
+            Intent intent = new Intent(this, ShowMonthActivity.class);
+            startActivity(intent);
+
+        }else if(i==3){
+            Intent intent = new Intent(this, ShowYearActivity.class);
+            startActivity(intent);
+
+        }
+    }
+
+
+
 
 }
 

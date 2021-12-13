@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <MultiSelectListPreference
-        android:defaultValue="@array/ChartTime"
+    <ListPreference
+        android:defaultValue="1"
         android:entries="@array/ChartTime"
-        android:entryValues="@array/ChartTime"
-        android:key="multi_select_list_preference_1"
-        android:title="Multi select list preference" />
+        android:entryValues="@array/value_Time"
+        android:key="list_preference_1"
+        android:title="Duration select" />
 </PreferenceScreen>

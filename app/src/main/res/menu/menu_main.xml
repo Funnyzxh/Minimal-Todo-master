@@ -2,8 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".AddToDo.AddToDoActivity">
-
-
     <item
         android:id="@+id/preferences"
         android:title="@string/action_settings"
