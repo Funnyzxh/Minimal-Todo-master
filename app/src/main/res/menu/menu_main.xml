@@ -4,11 +4,14 @@
     tools:context=".AddToDo.AddToDoActivity">
 
 
-
-
     <item
         android:id="@+id/preferences"
         android:title="@string/action_settings"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/chart"
+        android:title="@string/Chart_generation"
         app:showAsAction="never"
         />
 

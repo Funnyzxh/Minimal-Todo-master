@@ -42,7 +42,9 @@
             />
         <activity android:name="com.example.CAN301.timemanager.Settings.SettingsActivity"
             android:parentActivityName="com.example.CAN301.timemanager.Main.MainActivity"
-
+            />
+        <activity android:name=".Chart.ChartActivity"
+            android:parentActivityName=".Main.MainActivity"
             />
 
     </application>
