@@ -36,15 +36,15 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ReminderFragment extends AppDefaultFragment {
-    private TextView mtoDoTextTextView;
-    private Button mRemoveToDoButton;
-    private MaterialSpinner mSnoozeSpinner;
-    private String[] snoozeOptionsArray;
-    private StoreRetrieveData storeRetrieveData;
-    private ArrayList<ToDoItem> mToDoItems;
-    private ToDoItem mItem;
+    TextView mtoDoTextTextView;
+    Button mRemoveToDoButton;
+    MaterialSpinner mSnoozeSpinner;
+    String[] snoozeOptionsArray;
+    StoreRetrieveData storeRetrieveData;
+    ArrayList<ToDoItem> mToDoItems;
+    ToDoItem mItem;
     public static final String EXIT = "com.avjindersekhon.exit";
-    private TextView mSnoozeTextView;
+    TextView mSnoozeTextView;
     String theme;
 
     @Override

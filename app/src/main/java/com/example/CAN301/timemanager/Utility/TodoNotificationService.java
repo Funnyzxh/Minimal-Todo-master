@@ -16,9 +16,9 @@ import java.util.UUID;
 public class TodoNotificationService extends IntentService {
     public static final String TODOTEXT = "com.avjindersekhon.todonotificationservicetext";
     public static final String TODOUUID = "com.avjindersekhon.todonotificationserviceuuid";
-    private String mTodoText;
-    private UUID mTodoUUID;
-    private Context mContext;
+    String mTodoText;
+    UUID mTodoUUID;
+    Context mContext;
 
     public TodoNotificationService() {
         super("TodoNotificationService");

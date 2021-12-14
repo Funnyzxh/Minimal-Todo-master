@@ -54,31 +54,31 @@ import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 public class MainFragment extends AppDefaultFragment {
-    private RecyclerViewEmptySupport mRecyclerView;
-    private FloatingActionButton mAddToDoItemFAB;
-    private ArrayList<ToDoItem> mToDoItemsArrayList;
-    private CoordinatorLayout mCoordLayout;
+    RecyclerViewEmptySupport mRecyclerView;
+    FloatingActionButton mAddToDoItemFAB;
+    ArrayList<ToDoItem> mToDoItemsArrayList;
+    CoordinatorLayout mCoordLayout;
     public static final String TODOITEM = "com.CAN301.com.CAN301.timemanager.MainActivity";
-    private MainFragment.BasicListAdapter adapter;
-    private static final int REQUEST_ID_TODO_ITEM = 100;
-    private ToDoItem mJustDeletedToDoItem;
-    private int mIndexOfDeletedToDoItem;
+    MainFragment.BasicListAdapter adapter;
+    static final int REQUEST_ID_TODO_ITEM = 100;
+    ToDoItem mJustDeletedToDoItem;
+    int mIndexOfDeletedToDoItem;
     public static final String DATE_TIME_FORMAT_12_HOUR = "MMM d,yyyy h:mm a";
     public static final String DATE_TIME_FORMAT_24_HOUR = "MMM d,yyyy k:mm";
     public static final String FILENAME = "todoitems.json";
-    private StoreRetrieveData storeRetrieveData;
+    StoreRetrieveData storeRetrieveData;
     public ItemTouchHelper itemTouchHelper;
-    private CustomRecyclerScrollViewListener customRecyclerScrollViewListener;
+    CustomRecyclerScrollViewListener customRecyclerScrollViewListener;
     public static final String SHARED_PREF_DATA_SET_CHANGED = "com.avjindersekhon.datasetchanged";
     public static final String CHANGE_OCCURED = "com.avjinder.changeoccured";
-    private int mTheme = -1;
-    private String theme = "name_of_the_theme";
+    int mTheme = -1;
+    String theme = "name_of_the_theme";
     public static final String THEME_PREFERENCES = "com.avjindersekhon.themepref";
     public static final String RECREATE_ACTIVITY = "com.avjindersekhon.recreateactivity";
     public static final String THEME_SAVED = "com.avjindersekhon.savedtheme";
     public static final String DARKTHEME = "com.avjindersekon.darktheme";
     public static final String LIGHTTHEME = "com.avjindersekon.lighttheme";
-    private String[] testStrings = {"Clean my room",
+    String[] testStrings = {"Clean my room",
             "Water the plants",
             "Get car washed",
             "Get my dry cleaning"
@@ -299,7 +299,7 @@ public class MainFragment extends AppDefaultFragment {
     }
 
     public class BasicListAdapter extends RecyclerView.Adapter<BasicListAdapter.ViewHolder> implements ItemTouchHelperClass.ItemTouchHelperAdapter {
-        private ArrayList<ToDoItem> items;
+        ArrayList<ToDoItem> items;
 
         @Override
         public void onItemMoved(int fromPosition, int toPosition) {

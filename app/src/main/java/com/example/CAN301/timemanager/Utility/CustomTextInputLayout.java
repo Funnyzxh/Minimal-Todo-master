@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 public class CustomTextInputLayout extends TextInputLayout {
-    private boolean mIsHintSet;
-    private CharSequence mHint;
+    boolean mIsHintSet;
+    CharSequence mHint;
 
     public CustomTextInputLayout(Context context) {
         super(context);

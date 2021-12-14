@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class DeleteNotificationService extends IntentService {
-    private StoreRetrieveData storeRetrieveData;
-    private ArrayList<ToDoItem> mToDoItems;
-    private ToDoItem mItem;
+    StoreRetrieveData storeRetrieveData;
+    ArrayList<ToDoItem> mToDoItems;
+    ToDoItem mItem;
 
     public DeleteNotificationService() {
         super("DeleteNotificationService");
@@ -38,14 +38,14 @@ public class DeleteNotificationService extends IntentService {
         }
     }
 
-    private void dataChanged() {
+    void dataChanged() {
         SharedPreferences sharedPreferences = getSharedPreferences(MainFragment.SHARED_PREF_DATA_SET_CHANGED, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(MainFragment.CHANGE_OCCURED, true);
         editor.apply();
     }
 
-    private void saveData() {
+    void saveData() {
         try {
             storeRetrieveData.saveToFile(mToDoItems);
         } catch (Exception e) {

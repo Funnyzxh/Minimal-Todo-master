@@ -9,9 +9,9 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class ScrollingFABBehaviour extends CoordinatorLayout.Behavior<FloatingActionButton> {
-    private int toolbarHeight;
-    private static boolean scrolledUp = false;
-    private static boolean scrolledDown = false;
+    int toolbarHeight;
+    static boolean scrolledUp = false;
+    static boolean scrolledDown = false;
 
     public ScrollingFABBehaviour(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);

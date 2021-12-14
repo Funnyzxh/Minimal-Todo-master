@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
 public class ItemTouchHelperClass extends ItemTouchHelper.Callback {
-    private ItemTouchHelperAdapter adapter;
+    ItemTouchHelperAdapter adapter;
 
     public interface ItemTouchHelperAdapter {
         void onItemMoved(int fromPosition, int toPosition);

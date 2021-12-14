@@ -17,8 +17,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class StoreRetrieveData {
-    private Context mContext;
-    private String mFileName;
+    Context mContext;
+    String mFileName;
 
     public StoreRetrieveData(Context context, String filename) {
         mContext = context;

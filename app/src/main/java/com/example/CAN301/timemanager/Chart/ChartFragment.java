@@ -8,7 +8,7 @@ import android.preference.PreferenceFragment;
 import com.example.CAN301.timemanager.R;
 
 public class ChartFragment extends PreferenceFragment {
-    private callBackValue callBackValue;
+    callBackValue callBackValue;
 
     @Override
     public void onAttach(Activity activity) {

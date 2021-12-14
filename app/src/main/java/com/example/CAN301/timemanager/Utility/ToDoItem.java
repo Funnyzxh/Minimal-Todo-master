@@ -8,20 +8,20 @@ import java.util.Date;
 import java.util.UUID;
 
 public class ToDoItem implements Serializable {
-    private String mToDoText;
-    private boolean mHasReminder;
+    String mToDoText;
+    boolean mHasReminder;
     //add description
-    private String mToDoDescription;
-    private int mTodoColor;
-    private Date mToDoDate;
-    private UUID mTodoIdentifier;
+    String mToDoDescription;
+    int mTodoColor;
+    Date mToDoDate;
+    UUID mTodoIdentifier;
     //add description
-    private static final String TODODESCRIPTION = "tododescription";
-    private static final String TODOTEXT = "todotext";
-    private static final String TODOREMINDER = "todoreminder";
-    private static final String TODOCOLOR = "todocolor";
-    private static final String TODODATE = "tododate";
-    private static final String TODOIDENTIFIER = "todoidentifier";
+    static final String TODODESCRIPTION = "tododescription";
+    static final String TODOTEXT = "todotext";
+    static final String TODOREMINDER = "todoreminder";
+    static final String TODOCOLOR = "todocolor";
+    static final String TODODATE = "tododate";
+    static final String TODOIDENTIFIER = "todoidentifier";
 
     public ToDoItem(String todoBody, String tododescription, boolean hasReminder, Date toDoDate) {
         mToDoText = todoBody;
