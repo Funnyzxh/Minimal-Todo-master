@@ -15,7 +15,6 @@ public abstract class AppDefaultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(contentViewLayoutRes());
         setUpInitialFragment(savedInstanceState);
-
     }
 
     private void setUpInitialFragment(@Nullable Bundle savedInstanceState) {

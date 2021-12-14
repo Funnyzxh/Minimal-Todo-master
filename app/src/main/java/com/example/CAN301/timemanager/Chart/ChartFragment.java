@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
-
 import com.example.CAN301.timemanager.R;
 
-public class ChartFragment extends PreferenceFragment{
+public class ChartFragment extends PreferenceFragment {
     private callBackValue callBackValue;
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -20,7 +18,6 @@ public class ChartFragment extends PreferenceFragment{
 
     public interface callBackValue {
         public void setBtnState(int i);
-
     }
 
     @Override
@@ -31,7 +28,7 @@ public class ChartFragment extends PreferenceFragment{
             @Override
             public boolean onPreferenceChange(Preference preference, Object arg1) {
                 int v = Integer.parseInt(arg1.toString());
-                switch(v){
+                switch (v) {
                     case 1:
                         callBackValue.setBtnState(1);
                         break;
@@ -45,17 +42,13 @@ public class ChartFragment extends PreferenceFragment{
                         System.out.println(0);
                         break;
                 }
-
                 return false;
             }
         });
-
     }
 
-    public void Week(){
-
+    public void Week() {
     }
-
 
     @Override
     public void onResume() {

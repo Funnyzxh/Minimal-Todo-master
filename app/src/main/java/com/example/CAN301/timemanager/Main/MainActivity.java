@@ -8,14 +8,12 @@ import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
 import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
 import com.example.CAN301.timemanager.Chart.ChartActivity;
 import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Settings.SettingsActivity;
 
 public class MainActivity extends AppDefaultActivity {
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
@@ -46,23 +44,6 @@ public class MainActivity extends AppDefaultActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
-//            case R.id.switch_themes:
-//                if(mTheme == R.style.CustomStyle_DarkTheme){
-//                    addThemeToSharedPreferences(LIGHTTHEME);
-//                }
-//                else{
-//                    addThemeToSharedPreferences(DARKTHEME);
-//                }
-//
-////                if(mTheme == R.style.CustomStyle_DarkTheme){
-////                    mTheme = R.style.CustomStyle_LightTheme;
-////                }
-////                else{
-////                    mTheme = R.style.CustomStyle_DarkTheme;
-////                }
-//                this.recreate();
-//                return true;
             case R.id.preferences:
                 Intent intent = new Intent(this, SettingsActivity.class);
                 startActivity(intent);
@@ -71,12 +52,8 @@ public class MainActivity extends AppDefaultActivity {
                 Intent intentc = new Intent(this, ChartActivity.class);
                 startActivity(intentc);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
-
 }
-
-

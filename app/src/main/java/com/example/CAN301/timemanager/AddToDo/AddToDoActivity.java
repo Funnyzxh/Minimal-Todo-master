@@ -29,6 +29,4 @@ public class AddToDoActivity extends AppDefaultActivity {
     protected void onResume() {
         super.onResume();
     }
-
 }
-

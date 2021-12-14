@@ -17,21 +17,15 @@ import com.example.CAN301.timemanager.ChartShow.ShowYearActivity;
 import com.example.CAN301.timemanager.R;
 
 public class ChartActivity extends AppCompatActivity implements ChartFragment.callBackValue {
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
-
         final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         Toolbar toolbar = (Toolbar) findViewById(R.id.chartbar);
         setSupportActionBar(toolbar);
@@ -43,10 +37,10 @@ public class ChartActivity extends AppCompatActivity implements ChartFragment.ca
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
-
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.chartcontent, new ChartFragment()).commit();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -61,23 +55,15 @@ public class ChartActivity extends AppCompatActivity implements ChartFragment.ca
     }
 
     public void setBtnState(int i) {
-        if(i==1){
+        if (i == 1) {
             Intent intent = new Intent(this, ShowWeekActivity.class);
             startActivity(intent);
-
-        }else if(i==2){
+        } else if (i == 2) {
             Intent intent = new Intent(this, ShowMonthActivity.class);
             startActivity(intent);
-
-        }else if(i==3){
+        } else if (i == 3) {
             Intent intent = new Intent(this, ShowYearActivity.class);
             startActivity(intent);
-
         }
     }
-
-
-
-
 }
-

@@ -6,20 +6,15 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.PreferenceFragment;
 
-
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Utility.PreferenceKeys;
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences_layout);
-
     }
 
     @Override
@@ -30,17 +25,14 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             SharedPreferences.Editor themeEditor = themePreferences.edit();
             //We tell our MainLayout to recreate itself because mode has changed
             themeEditor.putBoolean(MainFragment.RECREATE_ACTIVITY, true);
-
             CheckBoxPreference checkBoxPreference = (CheckBoxPreference) findPreference(preferenceKeys.night_mode_pref_key);
             if (checkBoxPreference.isChecked()) {
                 //Comment out this line if not using Google Analytics
-
                 themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.DARKTHEME);
             } else {
                 themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
             }
             themeEditor.apply();
-
             getActivity().recreate();
         }
     }

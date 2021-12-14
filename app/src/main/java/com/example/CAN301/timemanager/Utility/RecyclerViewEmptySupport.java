@@ -7,7 +7,6 @@ import android.view.View;
 
 public class RecyclerViewEmptySupport extends RecyclerView {
     private View emptyView;
-
     private AdapterDataObserver observer = new AdapterDataObserver() {
         @Override
         public void onChanged() {
@@ -27,13 +26,11 @@ public class RecyclerViewEmptySupport extends RecyclerView {
         }
     };
 
-
     public RecyclerViewEmptySupport(Context context) {
         super(context);
     }
 
     public void showEmptyView() {
-
         Adapter<?> adapter = getAdapter();
         if (adapter != null && emptyView != null) {
             if (adapter.getItemCount() == 0) {
@@ -44,7 +41,6 @@ public class RecyclerViewEmptySupport extends RecyclerView {
                 RecyclerViewEmptySupport.this.setVisibility(VISIBLE);
             }
         }
-
     }
 
     public RecyclerViewEmptySupport(Context context, AttributeSet attrs) {

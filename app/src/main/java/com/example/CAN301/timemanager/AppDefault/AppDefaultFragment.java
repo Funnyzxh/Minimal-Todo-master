@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public abstract class AppDefaultFragment extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(
