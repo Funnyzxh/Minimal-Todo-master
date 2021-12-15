@@ -1,13 +1,11 @@
 package com.example.CAN301.timemanager.Settings;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,10 +13,8 @@ import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.example.CAN301.timemanager.Main.MainActivity;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
-import com.example.CAN301.timemanager.Utility.PreferenceKeys;
 
 public class SettingsActivity extends AppCompatActivity {
     @Override
@@ -47,8 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
         Switch t = (Switch) findViewById(R.id.switch1);
-        SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
-        String th = sp.getString(MainFragment.THEME_SAVED, null);
+        String th = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
         if(th.equals(MainFragment.LIGHTTHEME))
         {
             t.setChecked(true);
@@ -60,8 +55,9 @@ public class SettingsActivity extends AppCompatActivity {
                 Context ctx = SettingsActivity.this;
                 SharedPreferences themePreferences = ctx.getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor themeEditor = themePreferences.edit();
-                SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
-                String th = sp.getString(MainFragment.THEME_SAVED, null);
+                //SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
+                //String th = sp.getString(MainFragment.THEME_SAVED, null);
+                String th = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
                 if (isChecked){
                     if(!th.equals(MainFragment.LIGHTTHEME))
                     {
@@ -80,22 +76,10 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 }
 
-
             }
         });
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (NavUtils.getParentActivityName(this) != null) {
-                    NavUtils.navigateUpFromSameTask(this);
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 }

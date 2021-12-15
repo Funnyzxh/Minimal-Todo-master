@@ -62,8 +62,7 @@ public class StoreRetrieveData {
                 items.add(item);
             }
         } catch (FileNotFoundException fnfe) {
-            //do nothing about it
-            //file won't exist first time app is run
+            //pass
         } finally {
             if (bufferedReader != null) {
                 bufferedReader.close();

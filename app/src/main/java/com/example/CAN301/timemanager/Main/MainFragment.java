@@ -2,7 +2,6 @@ package com.example.CAN301.timemanager.Main;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -16,18 +15,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
@@ -36,7 +31,6 @@ import com.example.CAN301.timemanager.AddToDo.AddToDoActivity;
 import com.example.CAN301.timemanager.AddToDo.AddToDoFragment;
 import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
 import com.example.CAN301.timemanager.R;
-import com.example.CAN301.timemanager.Reminder.ReminderFragment;
 import com.example.CAN301.timemanager.Settings.SettingsActivity;
 import com.example.CAN301.timemanager.Utility.ItemTouchHelperClass;
 import com.example.CAN301.timemanager.Utility.RecyclerViewEmptySupport;
@@ -159,13 +153,6 @@ public class MainFragment extends AppDefaultFragment {
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_DATA_SET_CHANGED, MODE_PRIVATE);
-        if (sharedPreferences.getBoolean(ReminderFragment.EXIT, false)) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(ReminderFragment.EXIT, false);
-            editor.apply();
-            getActivity().finish();
-        }
         if (getActivity().getSharedPreferences(THEME_PREFERENCES, MODE_PRIVATE).getBoolean(RECREATE_ACTIVITY, false)) {
             SharedPreferences.Editor editor = getActivity().getSharedPreferences(THEME_PREFERENCES, MODE_PRIVATE).edit();
             editor.putBoolean(RECREATE_ACTIVITY, false);
@@ -206,17 +193,6 @@ public class MainFragment extends AppDefaultFragment {
         }
     }
 
-    public void addThemeToSharedPreferences(String theme) {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(THEME_PREFERENCES, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(THEME_SAVED, theme);
-        editor.apply();
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -278,7 +254,6 @@ public class MainFragment extends AppDefaultFragment {
             PendingIntent pi = PendingIntent.getService(getContext(), requestCode, i, PendingIntent.FLAG_NO_CREATE);
             pi.cancel();
             getAlarmManager().cancel(pi);
-            Log.d("OskarSchindler", "PI Cancelled " + doesPendingIntentExist(i, requestCode));
         }
     }
 

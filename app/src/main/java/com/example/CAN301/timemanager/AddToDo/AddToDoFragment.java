@@ -1,9 +1,6 @@
 package com.example.CAN301.timemanager.AddToDo;
 
 import android.animation.Animator;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -18,17 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
 import com.example.CAN301.timemanager.Main.MainFragment;
@@ -48,51 +42,35 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 public class AddToDoFragment extends AppDefaultFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    static final String TAG = "AddToDoFragment";
-    Date mLastEdited;
     EditText mToDoTextBodyEditText;
     EditText mToDoTextBodyDescription;
     SwitchCompat mToDoDateSwitch;
     LinearLayout mUserDateSpinnerContainingLinearLayout;
     TextView mReminderTextView;
-    String CombinationText;
     EditText mDateEditText;
     EditText mTimeEditText;
-    String mDefaultTimeOptions12H[];
-    String mDefaultTimeOptions24H[];
-    Button mChooseDateButton;
-    Button mChooseTimeButton;
-    Button mCopyClipboard;
     ToDoItem mUserToDoItem;
     FloatingActionButton mToDoSendFloatingActionButton;
-    public static final String DATE_FORMAT = "MMM d, yyyy";
-    public static final String DATE_FORMAT_MONTH_DAY = "MMM d";
-    public static final String DATE_FORMAT_TIME = "H:m";
     String mUserEnteredText;
     String mUserEnteredDescription;
     boolean mUserHasReminder;
     Toolbar mToolbar;
     Date mUserReminderDate;
     int mUserColor;
-    boolean setDateButtonClickedOnce = false;
-    boolean setTimeButtonClickedOnce = false;
     LinearLayout mContainerLayout;
     String theme;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //Need references to these to change them during light/dark mode
         ImageButton reminderIconImageButton;
         TextView reminderRemindMeTextView;
         theme = getActivity().getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
         if (theme.equals(MainFragment.LIGHTTHEME)) {
             getActivity().setTheme(R.style.CustomStyle_LightTheme);
-            Log.d("OskarSchindler", "Light Theme");
         } else {
             getActivity().setTheme(R.style.CustomStyle_DarkTheme);
         }
-        //Show an X in place of <-
         final Drawable cross = getResources().getDrawable(R.drawable.ic_clear_white_24dp);
         if (cross != null) {
             cross.setColorFilter(getResources().getColor(R.color.icons), PorterDuff.Mode.SRC_ATOP);
@@ -117,8 +95,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
             reminderIconImageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_alarm_add_white_24dp));
             reminderRemindMeTextView.setTextColor(Color.WHITE);
         }
-        //Button for Copy to Clipboard
-        mCopyClipboard = (Button) view.findViewById(R.id.copyclipboard);
+
         mContainerLayout = (LinearLayout) view.findViewById(R.id.todoReminderAndDateContainerLayout);
         mUserDateSpinnerContainingLinearLayout = (LinearLayout) view.findViewById(R.id.toDoEnterDateLinearLayout);
         mToDoTextBodyEditText = (EditText) view.findViewById(R.id.userToDoEditText);
@@ -126,19 +103,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         mToDoDateSwitch = (SwitchCompat) view.findViewById(R.id.toDoHasDateSwitchCompat);
         mToDoSendFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.makeToDoFloatingActionButton);
         mReminderTextView = (TextView) view.findViewById(R.id.newToDoDateTimeReminderTextView);
-        //OnClickListener for CopyClipboard Button
-        mCopyClipboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String toDoTextContainer = mToDoTextBodyEditText.getText().toString();
-                String toDoTextBodyDescriptionContainer = mToDoTextBodyDescription.getText().toString();
-                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                CombinationText = "Title : " + toDoTextContainer + "\nDescription : " + toDoTextBodyDescriptionContainer + "\n -Copied From MinimalToDo";
-                ClipData clip = ClipData.newPlainText("text", CombinationText);
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(getContext(), "Copied To Clipboard!", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         mContainerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -291,7 +256,6 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
             }
             cal.set(Calendar.MINUTE, 0);
             mUserReminderDate = cal.getTime();
-            Log.d("OskarSchindler", "Imagined Date: " + mUserReminderDate);
             String timeString;
             if (time24) {
                 timeString = formatDate("k:mm", mUserReminderDate);
@@ -342,7 +306,6 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        Log.d("OskarSchindler", "Time set: " + hour);
         calendar.set(year, month, day, hour, minute, 0);
         mUserReminderDate = calendar.getTime();
         setReminderTextView();
@@ -368,7 +331,6 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         if (mUserReminderDate != null) {
             mReminderTextView.setVisibility(View.VISIBLE);
             if (mUserReminderDate.before(new Date())) {
-                Log.d("OskarSchindler", "DATE is " + mUserReminderDate);
                 mReminderTextView.setText(getString(R.string.date_error_check_again));
                 mReminderTextView.setTextColor(Color.RED);
                 return;
@@ -392,16 +354,13 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
     }
 
     public void makeResult(int result) {
-        Log.d(TAG, "makeResult - ok : in");
         Intent i = new Intent();
         if (mUserEnteredText.length() > 0) {
             String capitalizedString = Character.toUpperCase(mUserEnteredText.charAt(0)) + mUserEnteredText.substring(1);
             mUserToDoItem.setToDoText(capitalizedString);
-            Log.d(TAG, "Description: " + mUserEnteredDescription);
             mUserToDoItem.setmToDoDescription(mUserEnteredDescription);
         } else {
             mUserToDoItem.setToDoText(mUserEnteredText);
-            Log.d(TAG, "Description: " + mUserEnteredDescription);
             mUserToDoItem.setmToDoDescription(mUserEnteredDescription);
         }
         if (mUserReminderDate != null) {
