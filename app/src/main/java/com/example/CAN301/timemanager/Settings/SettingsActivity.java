@@ -59,6 +59,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(!th.equals(MainFragment.LIGHTTHEME))
                     {
                         themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
+                        themeEditor.putBoolean(MainFragment.RECREATE_ACTIVITY, true);
                         themeEditor.apply();
                         recreate();
                     }
@@ -69,6 +70,7 @@ public class SettingsActivity extends AppCompatActivity {
                     if(!th.equals(MainFragment.DARKTHEME))
                     {
                         themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.DARKTHEME);
+                        themeEditor.putBoolean(MainFragment.RECREATE_ACTIVITY, true);
                         themeEditor.apply();
                         recreate();
                     }
