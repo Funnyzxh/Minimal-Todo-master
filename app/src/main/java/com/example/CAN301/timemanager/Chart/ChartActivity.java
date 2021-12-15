@@ -76,37 +76,5 @@ public class ChartActivity extends AppCompatActivity{
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (NavUtils.getParentActivityName(this) != null) {
-                    NavUtils.navigateUpFromSameTask(this);
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public void setTimeDur(int i) {
-        if(i==1){
-            Intent intent = new Intent(this, ShowWeekActivity.class);
-            startActivity(intent);
-
-        }else if(i==2){
-            Intent intent = new Intent(this, ShowMonthActivity.class);
-            startActivity(intent);
-
-        }else if(i==3){
-            Intent intent = new Intent(this, ShowYearActivity.class);
-            startActivity(intent);
-
-        }
-    }
-
-
-
-
 }
 

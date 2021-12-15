@@ -43,10 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
         Switch t = (Switch) findViewById(R.id.switch1);
-        //SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
-        //String th = sp.getString(MainFragment.THEME_SAVED, null);
         String th = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
-        System.out.println(th);
         if(th.equals(MainFragment.LIGHTTHEME))
         {
             t.setChecked(true);
@@ -79,22 +76,10 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 }
 
-
             }
         });
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (NavUtils.getParentActivityName(this) != null) {
-                    NavUtils.navigateUpFromSameTask(this);
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 }
