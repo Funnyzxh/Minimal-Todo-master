@@ -62,7 +62,6 @@ public class SettingsActivity extends AppCompatActivity {
                 SharedPreferences.Editor themeEditor = themePreferences.edit();
                 SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
                 String th = sp.getString(MainFragment.THEME_SAVED, null);
-                System.out.println(th);
                 if (isChecked){
                     if(!th.equals(MainFragment.LIGHTTHEME))
                     {
