@@ -4,9 +4,7 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Reminder.ReminderActivity;
@@ -14,11 +12,10 @@ import com.example.CAN301.timemanager.Reminder.ReminderActivity;
 import java.util.UUID;
 
 public class TodoNotificationService extends IntentService {
-    public static final String TODOTEXT = "com.avjindersekhon.todonotificationservicetext";
-    public static final String TODOUUID = "com.avjindersekhon.todonotificationserviceuuid";
+    public static final String TODOTEXT = "com.example.CAN301.timemanager.todonotificationservicetext";
+    public static final String TODOUUID = "com.example.CAN301.timemanager..todonotificationserviceuuid";
     String mTodoText;
     UUID mTodoUUID;
-    Context mContext;
 
     public TodoNotificationService() {
         super("TodoNotificationService");
@@ -28,7 +25,6 @@ public class TodoNotificationService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         mTodoText = intent.getStringExtra(TODOTEXT);
         mTodoUUID = (UUID) intent.getSerializableExtra(TODOUUID);
-        Log.d("OskarSchindler", "onHandleIntent called");
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Intent i = new Intent(this, ReminderActivity.class);
         i.putExtra(TodoNotificationService.TODOUUID, mTodoUUID);

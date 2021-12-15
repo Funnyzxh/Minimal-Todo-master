@@ -1,13 +1,11 @@
 package com.example.CAN301.timemanager.Settings;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,10 +13,8 @@ import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.example.CAN301.timemanager.Main.MainActivity;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
-import com.example.CAN301.timemanager.Utility.PreferenceKeys;
 
 public class SettingsActivity extends AppCompatActivity {
     @Override
@@ -48,7 +44,6 @@ public class SettingsActivity extends AppCompatActivity {
         }
         Switch t = (Switch) findViewById(R.id.switch1);
         String th = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
-        System.out.println(th);
         if(th.equals(MainFragment.LIGHTTHEME))
         {
             t.setChecked(true);
@@ -79,22 +74,10 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 }
 
-
             }
         });
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                if (NavUtils.getParentActivityName(this) != null) {
-                    NavUtils.navigateUpFromSameTask(this);
-                }
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 }

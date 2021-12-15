@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
-import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
 
 public class ReminderActivity extends AppDefaultActivity {
