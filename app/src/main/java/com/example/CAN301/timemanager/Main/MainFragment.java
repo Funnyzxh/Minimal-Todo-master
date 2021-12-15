@@ -58,7 +58,7 @@ public class MainFragment extends AppDefaultFragment {
     FloatingActionButton mAddToDoItemFAB;
     ArrayList<ToDoItem> mToDoItemsArrayList;
     CoordinatorLayout mCoordLayout;
-    public static final String TODOITEM = "com.CAN301.com.CAN301.timemanager.MainActivity";
+    public static final String TODOITEM = "com.example.CAN301.timemanager.MainActivity";
     MainFragment.BasicListAdapter adapter;
     static final int REQUEST_ID_TODO_ITEM = 100;
     ToDoItem mJustDeletedToDoItem;
@@ -69,20 +69,15 @@ public class MainFragment extends AppDefaultFragment {
     StoreRetrieveData storeRetrieveData;
     public ItemTouchHelper itemTouchHelper;
     CustomRecyclerScrollViewListener customRecyclerScrollViewListener;
-    public static final String SHARED_PREF_DATA_SET_CHANGED = "com.avjindersekhon.datasetchanged";
-    public static final String CHANGE_OCCURED = "com.avjinder.changeoccured";
+    public static final String SHARED_PREF_DATA_SET_CHANGED = "com.example.CAN301.timemanager.datasetchanged";
+    public static final String CHANGE_OCCURED = "com.example.CAN301.timemanager.changeoccured";
     int mTheme = -1;
     String theme = "name_of_the_theme";
-    public static final String THEME_PREFERENCES = "com.avjindersekhon.themepref";
-    public static final String RECREATE_ACTIVITY = "com.avjindersekhon.recreateactivity";
-    public static final String THEME_SAVED = "com.avjindersekhon.savedtheme";
-    public static final String DARKTHEME = "com.avjindersekon.darktheme";
-    public static final String LIGHTTHEME = "com.avjindersekon.lighttheme";
-    String[] testStrings = {"Clean my room",
-            "Water the plants",
-            "Get car washed",
-            "Get my dry cleaning"
-    };
+    public static final String THEME_PREFERENCES = "com.example.CAN301.timemanager.themepref";
+    public static final String RECREATE_ACTIVITY = "com.example.CAN301.timemanager.recreateactivity";
+    public static final String THEME_SAVED = "com.example.CAN301.timemanager.savedtheme";
+    public static final String DARKTHEME = "com.example.CAN301.timemanager.darktheme";
+    public static final String LIGHTTHEME = "com.example.CAN301.timemanager.lighttheme";
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
