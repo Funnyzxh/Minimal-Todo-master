@@ -47,8 +47,6 @@ public class SettingsActivity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
         Switch t = (Switch) findViewById(R.id.switch1);
-        //SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
-        //String th = sp.getString(MainFragment.THEME_SAVED, null);
         String th = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
         System.out.println(th);
         if(th.equals(MainFragment.LIGHTTHEME))
@@ -62,8 +60,6 @@ public class SettingsActivity extends AppCompatActivity {
                 Context ctx = SettingsActivity.this;
                 SharedPreferences themePreferences = ctx.getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor themeEditor = themePreferences.edit();
-                //SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
-                //String th = sp.getString(MainFragment.THEME_SAVED, null);
                 String th = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
                 if (isChecked){
                     if(!th.equals(MainFragment.LIGHTTHEME))

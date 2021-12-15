@@ -29,7 +29,6 @@
 
 
                 <com.example.CAN301.timemanager.Utility.CustomTextInputLayout
-                    android:id="@+id/toDoCustomTextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -55,7 +54,6 @@
 
 
             <com.example.CAN301.timemanager.Utility.CustomTextInputLayout
-                android:id="@+id/toDoCustomTextInput01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
