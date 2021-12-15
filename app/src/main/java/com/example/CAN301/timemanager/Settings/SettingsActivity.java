@@ -1,17 +1,24 @@
 package com.example.CAN301.timemanager.Settings;
 
 import android.app.FragmentManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
+import com.example.CAN301.timemanager.Main.MainActivity;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
+import com.example.CAN301.timemanager.Utility.PreferenceKeys;
 
 public class SettingsActivity extends AppCompatActivity {
     @Override
@@ -39,8 +46,38 @@ public class SettingsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
-        FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().replace(R.id.mycontent, new SettingsFragment()).commit();
+        Switch t = (Switch) findViewById(R.id.switch1);
+        t.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Context ctx = SettingsActivity.this;
+                SharedPreferences themePreferences = ctx.getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
+                SharedPreferences.Editor themeEditor = themePreferences.edit();
+                if (isChecked){
+                    SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
+                    String th = sp.getString(MainFragment.THEME_SAVED, null);
+                    if(!th.equals(MainFragment.LIGHTTHEME))
+                    {
+                        themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
+                        themeEditor.apply();
+                        recreate();
+                    }
+                }else {
+
+                    SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
+                    String th = sp.getString(MainFragment.THEME_SAVED, null);
+                    if(!th.equals(MainFragment.DARKTHEME))
+                    {
+                        themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.DARKTHEME);
+                        themeEditor.apply();
+                        recreate();
+                    }
+                }
+
+
+            }
+        });
+
     }
 
     @Override
