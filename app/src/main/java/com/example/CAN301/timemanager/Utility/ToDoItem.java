@@ -9,6 +9,11 @@ import java.util.UUID;
 
 public class ToDoItem implements Serializable {
     String mToDoText;
+
+    public boolean getmHasReminder() {
+        return mHasReminder;
+    }
+
     boolean mHasReminder;
     //add description
     String mToDoDescription;
