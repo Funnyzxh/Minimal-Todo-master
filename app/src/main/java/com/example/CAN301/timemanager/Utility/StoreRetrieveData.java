@@ -17,8 +17,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class StoreRetrieveData {
-    private Context mContext;
-    private String mFileName;
+    Context mContext;
+    String mFileName;
 
     public StoreRetrieveData(Context context, String filename) {
         mContext = context;
@@ -56,14 +56,11 @@ public class StoreRetrieveData {
             while ((line = bufferedReader.readLine()) != null) {
                 builder.append(line);
             }
-
             JSONArray jsonArray = (JSONArray) new JSONTokener(builder.toString()).nextValue();
             for (int i = 0; i < jsonArray.length(); i++) {
                 ToDoItem item = new ToDoItem(jsonArray.getJSONObject(i));
                 items.add(item);
             }
-
-
         } catch (FileNotFoundException fnfe) {
             //do nothing about it
             //file won't exist first time app is run
@@ -74,9 +71,7 @@ public class StoreRetrieveData {
             if (fileInputStream != null) {
                 fileInputStream.close();
             }
-
         }
         return items;
     }
-
 }

@@ -36,7 +36,6 @@ dependencies {
     implementation 'com.github.ganfra:material-spinner:1.1.0'
     implementation 'com.wdullaer:materialdatetimepicker:1.5.1'
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
-    implementation 'com.github.ganfra:material-spinner:1.1.0'
     implementation 'com.android.support:recyclerview-v7:23.1.0'
     implementation 'com.android.support:design:23.1.0'
     implementation 'com.android.support:appcompat-v7:23.1.0'

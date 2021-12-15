@@ -11,20 +11,16 @@ import android.view.MenuItem;
 
 import com.example.CAN301.timemanager.R;
 
-public class ShowWeekActivity extends AppCompatActivity{
-
+public class ShowWeekActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart_week);
-
         final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         Toolbar toolbar = (Toolbar) findViewById(R.id.weekbar);
         setSupportActionBar(toolbar);
@@ -36,8 +32,8 @@ public class ShowWeekActivity extends AppCompatActivity{
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
-
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -51,5 +47,3 @@ public class ShowWeekActivity extends AppCompatActivity{
         }
     }
 }
-
-

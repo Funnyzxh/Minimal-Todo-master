@@ -1,6 +1,5 @@
 package com.example.CAN301.timemanager.ChartShow;
 
-
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -13,19 +12,15 @@ import android.view.MenuItem;
 import com.example.CAN301.timemanager.R;
 
 public class ShowYearActivity extends AppCompatActivity {
-
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart_year);
-
         final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         Toolbar toolbar = (Toolbar) findViewById(R.id.yearbar);
         setSupportActionBar(toolbar);
@@ -37,8 +32,8 @@ public class ShowYearActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
-
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
