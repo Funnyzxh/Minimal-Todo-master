@@ -10,12 +10,10 @@ import java.util.UUID;
 public class ToDoItem implements Serializable {
     String mToDoText;
     boolean mHasReminder;
-    //add description
     String mToDoDescription;
     int mTodoColor;
     Date mToDoDate;
     UUID mTodoIdentifier;
-    //add description
     static final String TODODESCRIPTION = "tododescription";
     static final String TODOTEXT = "todotext";
     static final String TODOREMINDER = "todoreminder";
@@ -54,10 +52,6 @@ public class ToDoItem implements Serializable {
         jsonObject.put(TODOCOLOR, mTodoColor);
         jsonObject.put(TODOIDENTIFIER, mTodoIdentifier.toString());
         return jsonObject;
-    }
-
-    public ToDoItem() {
-        this("Clean my room", "Sweep and Mop my Room", true, new Date());
     }
 
     public String getmToDoDescription() {

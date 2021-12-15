@@ -130,16 +130,6 @@
                         android:gravity="center"
                         android:padding="8dp" />
 
-                    <Button
-                        android:id="@+id/copyclipboard"
-                        android:layout_width="0dp"
-                        android:layout_height="28dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight=".37"
-                        android:background="@drawable/ic_content_copy_black_24dp"
-                        android:backgroundTint="@color/grey600"
-                        android:padding="8dp"
-                        android:visibility="visible" />
 
                 </LinearLayout>
 

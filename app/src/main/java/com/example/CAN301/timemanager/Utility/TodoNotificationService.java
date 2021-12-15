@@ -14,8 +14,8 @@ import com.example.CAN301.timemanager.Reminder.ReminderActivity;
 import java.util.UUID;
 
 public class TodoNotificationService extends IntentService {
-    public static final String TODOTEXT = "com.avjindersekhon.todonotificationservicetext";
-    public static final String TODOUUID = "com.avjindersekhon.todonotificationserviceuuid";
+    public static final String TODOTEXT = "com.example.CAN301.timemanager.todonotificationservicetext";
+    public static final String TODOUUID = "com.example.CAN301.timemanager..todonotificationserviceuuid";
     String mTodoText;
     UUID mTodoUUID;
     Context mContext;

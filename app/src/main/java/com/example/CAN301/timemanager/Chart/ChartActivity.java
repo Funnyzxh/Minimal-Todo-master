@@ -51,37 +51,30 @@ public class ChartActivity extends AppCompatActivity{
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
         Button btn = (Button) findViewById(R.id.button);
-                 //给Button按钮添加点击的监听
                 btn.setOnClickListener(new View.OnClickListener() {
             @Override
-             //只要当前的设置的监听器被触发，这个方法就会被执行
             public void onClick(View v) {
                 Intent intent_w = new Intent(ChartActivity.this, ShowWeekActivity.class);
                 startActivity(intent_w);
             }
         });
         Button btn2 = (Button) findViewById(R.id.button2);
-        //给Button按钮添加点击的监听
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
-            //只要当前的设置的监听器被触发，这个方法就会被执行
             public void onClick(View v) {
                 Intent intent_m = new Intent(ChartActivity.this, ShowMonthActivity.class);
                 startActivity(intent_m);
             }
         });
         Button btn3 = (Button) findViewById(R.id.button3);
-        //给Button按钮添加点击的监听
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
-            //只要当前的设置的监听器被触发，这个方法就会被执行
             public void onClick(View v) {
                 Intent intent_y = new Intent(ChartActivity.this, ShowYearActivity.class);
                 startActivity(intent_y);
             }
         });
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

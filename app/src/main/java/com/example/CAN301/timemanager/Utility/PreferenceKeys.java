@@ -1,7 +1,6 @@
 package com.example.CAN301.timemanager.Utility;
 
 import android.content.res.Resources;
-
 import com.example.CAN301.timemanager.R;
 
 public class PreferenceKeys {

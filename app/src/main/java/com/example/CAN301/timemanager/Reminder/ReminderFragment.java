@@ -43,7 +43,7 @@ public class ReminderFragment extends AppDefaultFragment {
     StoreRetrieveData storeRetrieveData;
     ArrayList<ToDoItem> mToDoItems;
     ToDoItem mItem;
-    public static final String EXIT = "com.avjindersekhon.exit";
+    public static final String EXIT = "com.example.CAN301.timemanager.exit";
     TextView mSnoozeTextView;
     String theme;
 
@@ -151,7 +151,6 @@ public class ReminderFragment extends AppDefaultFragment {
                 Date date = addTimeToDate(valueFromSpinner());
                 mItem.setToDoDate(date);
                 mItem.setHasReminder(true);
-                Log.d("OskarSchindler", "Date Changed to: " + date);
                 changeOccurred();
                 saveData();
                 closeApp();
