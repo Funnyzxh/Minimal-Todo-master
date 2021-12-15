@@ -2,8 +2,8 @@
 <resources>
     <color name="amber">#FFC107</color>
 
-    <color name="primary">#3F51B5</color>
-    <color name="primary_dark">#303F9F</color>
+    <color name="primary">#FBE7A3</color>
+    <color name="primary_dark">#FFBD0C</color>
     <color name="accent">#03A9F4</color>
     <!--<color name="accent">#FF9100</color>-->
     <color name="secondary_text">#727272</color>
