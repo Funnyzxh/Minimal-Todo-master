@@ -1,16 +1,20 @@
 package com.example.CAN301.timemanager.Chart;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 
+import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
+import com.example.CAN301.timemanager.Utility.PreferenceKeys;
 
 public class ChartFragment extends PreferenceFragment{
     private callBackValue callBackValue;
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -44,15 +48,9 @@ public class ChartFragment extends PreferenceFragment{
                         //System.out.println(0);
                         break;
                 }
-
                 return false;
             }
         });
-
-    }
-
-    public void Week(){
-
     }
 
 

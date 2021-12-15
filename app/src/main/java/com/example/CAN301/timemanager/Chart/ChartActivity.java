@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import com.example.CAN301.timemanager.ChartShow.ShowMonthActivity;
 import com.example.CAN301.timemanager.ChartShow.ShowWeekActivity;
 import com.example.CAN301.timemanager.ChartShow.ShowYearActivity;
+import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
 
 public class ChartActivity extends AppCompatActivity implements ChartFragment.callBackValue {
@@ -28,7 +29,12 @@ public class ChartActivity extends AppCompatActivity implements ChartFragment.ca
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        String theme = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
+        if (theme.equals(MainFragment.LIGHTTHEME)) {
+            setTheme(R.style.CustomStyle_LightTheme);
+        } else {
+            setTheme(R.style.CustomStyle_DarkTheme);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
