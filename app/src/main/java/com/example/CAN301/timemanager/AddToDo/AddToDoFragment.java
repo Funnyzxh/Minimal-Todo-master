@@ -189,9 +189,9 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         });
         mDateEditText = (EditText) view.findViewById(R.id.newTodoDateEditText);
         mTimeEditText = (EditText) view.findViewById(R.id.newTodoTimeEditText);
-        mDateEditText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        View.OnClickListener dateClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                 Date date;
                 hideKeyboard(mToDoTextBodyEditText);
                 if (mUserToDoItem.getToDoDate() != null) {
@@ -210,8 +210,9 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                 }
                 datePickerDialog.show(getActivity().getFragmentManager(), "DateFragment");
             }
-        });
-        mTimeEditText.setOnClickListener(new View.OnClickListener() {
+        };
+        mDateEditText.setOnClickListener(dateClickListener);
+        View.OnClickListener timeClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Date date;
@@ -231,7 +232,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                 }
                 timePickerDialog.show(getActivity().getFragmentManager(), "TimeFragment");
             }
-        });
+        };
+        mTimeEditText.setOnClickListener(timeClickListener);
         setDateAndTimeEditText();
     }
 
