@@ -15,12 +15,11 @@ public class ChartFragment extends PreferenceFragment{
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        callBackValue = (callBackValue) getActivity();//把Activity转成接口
+        callBackValue = (callBackValue) getActivity();
     }
 
     public interface callBackValue {
-        public void setBtnState(int i);
-
+        public void setTimeDur(int i);
     }
 
     @Override
@@ -33,16 +32,16 @@ public class ChartFragment extends PreferenceFragment{
                 int v = Integer.parseInt(arg1.toString());
                 switch(v){
                     case 1:
-                        callBackValue.setBtnState(1);
+                        callBackValue.setTimeDur(1);
                         break;
                     case 2:
-                        callBackValue.setBtnState(2);
+                        callBackValue.setTimeDur(2);
                         break;
                     case 3:
-                        callBackValue.setBtnState(3);
+                        callBackValue.setTimeDur(3);
                         break;
                     default:
-                        System.out.println(0);
+                        //System.out.println(0);
                         break;
                 }
 

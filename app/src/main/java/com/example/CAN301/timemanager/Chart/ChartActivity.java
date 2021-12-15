@@ -60,7 +60,7 @@ public class ChartActivity extends AppCompatActivity implements ChartFragment.ca
         }
     }
 
-    public void setBtnState(int i) {
+    public void setTimeDur(int i) {
         if(i==1){
             Intent intent = new Intent(this, ShowWeekActivity.class);
             startActivity(intent);

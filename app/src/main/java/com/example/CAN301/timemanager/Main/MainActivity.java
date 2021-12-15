@@ -68,8 +68,8 @@ public class MainActivity extends AppDefaultActivity {
                 startActivity(intent);
                 return true;
             case R.id.chart:
-                Intent intentc = new Intent(this, ChartActivity.class);
-                startActivity(intentc);
+                Intent intent_chart = new Intent(this, ChartActivity.class);
+                startActivity(intent_chart);
                 return true;
 
             default:
