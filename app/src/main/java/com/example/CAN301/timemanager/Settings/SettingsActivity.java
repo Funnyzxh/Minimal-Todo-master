@@ -47,15 +47,23 @@ public class SettingsActivity extends AppCompatActivity {
             getSupportActionBar().setHomeAsUpIndicator(backArrow);
         }
         Switch t = (Switch) findViewById(R.id.switch1);
+        SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
+        String th = sp.getString(MainFragment.THEME_SAVED, null);
+        if(th.equals(MainFragment.LIGHTTHEME))
+        {
+            t.setChecked(true);
+        }
+
         t.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Context ctx = SettingsActivity.this;
                 SharedPreferences themePreferences = ctx.getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor themeEditor = themePreferences.edit();
+                SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
+                String th = sp.getString(MainFragment.THEME_SAVED, null);
+                System.out.println(th);
                 if (isChecked){
-                    SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
-                    String th = sp.getString(MainFragment.THEME_SAVED, null);
                     if(!th.equals(MainFragment.LIGHTTHEME))
                     {
                         themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
@@ -64,9 +72,6 @@ public class SettingsActivity extends AppCompatActivity {
                         recreate();
                     }
                 }else {
-
-                    SharedPreferences sp = getSharedPreferences(MainFragment.THEME_PREFERENCES, Context.MODE_PRIVATE);
-                    String th = sp.getString(MainFragment.THEME_SAVED, null);
                     if(!th.equals(MainFragment.DARKTHEME))
                     {
                         themeEditor.putString(MainFragment.THEME_SAVED, MainFragment.DARKTHEME);
