@@ -42,7 +42,6 @@ import static android.content.Context.INPUT_METHOD_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 public class AddToDoFragment extends AppDefaultFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    static final String TAG = "AddToDoFragment";
     EditText mToDoTextBodyEditText;
     EditText mToDoTextBodyDescription;
     SwitchCompat mToDoDateSwitch;
@@ -50,7 +49,6 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
     TextView mReminderTextView;
     EditText mDateEditText;
     EditText mTimeEditText;
-
     ToDoItem mUserToDoItem;
     FloatingActionButton mToDoSendFloatingActionButton;
     String mUserEnteredText;
