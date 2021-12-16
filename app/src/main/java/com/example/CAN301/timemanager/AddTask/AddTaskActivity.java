@@ -1,14 +1,12 @@
 package com.example.CAN301.timemanager.AddTask;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 
-import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
+import android.support.v7.app.AppCompatActivity;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
 
-public class AddTaskActivity extends AppDefaultActivity {
+public class AddTaskActivity extends AppCompatActivity {
     @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +17,15 @@ public class AddTaskActivity extends AppDefaultActivity {
             setTheme(R.style.CustomStyle_DarkTheme);
         }
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_to_do);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, AddTaskFragment.newInstance())
+                    .commit();
+        }
     }
 
-    @Override
-    protected int contentViewLayoutRes() {
-        return R.layout.activity_add_to_do;
-    }
-
-    @NonNull
-    @Override
-    protected Fragment createInitialFragment() {
-        return AddTaskFragment.newInstance();
-    }
 
     @Override
     protected void onResume() {

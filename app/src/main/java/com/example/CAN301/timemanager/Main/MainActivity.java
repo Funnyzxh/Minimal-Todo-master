@@ -2,18 +2,18 @@ package com.example.CAN301.timemanager.Main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
+
 import com.example.CAN301.timemanager.ChartShow.ChartShowActivity;
 import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Settings.SettingsActivity;
 
-public class MainActivity extends AppDefaultActivity {
+public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         String theme = getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
@@ -23,6 +23,13 @@ public class MainActivity extends AppDefaultActivity {
             setTheme(R.style.CustomStyle_DarkTheme);
         }
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, MainFragment.newInstance())
+                    .commit();
+        }
         final android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -31,16 +38,6 @@ public class MainActivity extends AppDefaultActivity {
         }
     }
 
-    @Override
-    protected int contentViewLayoutRes() {
-        return R.layout.activity_main;
-    }
-
-    @NonNull
-    @Override
-    protected Fragment createInitialFragment() {
-        return MainFragment.newInstance();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
