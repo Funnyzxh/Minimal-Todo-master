@@ -24,4 +24,8 @@
         android:layout_below="@id/yearbar"
         android:orientation="vertical" />
 
+    <com.example.CAN301.timemanager.ChartShow.DrawActivity
+        android:id="@+id/drawimages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

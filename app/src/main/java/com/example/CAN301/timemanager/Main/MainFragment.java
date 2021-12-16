@@ -31,7 +31,6 @@ import com.example.CAN301.timemanager.AddToDo.AddToDoActivity;
 import com.example.CAN301.timemanager.AddToDo.AddToDoFragment;
 import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
 import com.example.CAN301.timemanager.R;
-import com.example.CAN301.timemanager.Reminder.ReminderFragment;
 import com.example.CAN301.timemanager.Settings.SettingsActivity;
 import com.example.CAN301.timemanager.Utility.ItemTouchHelperClass;
 import com.example.CAN301.timemanager.Utility.RecyclerViewEmptySupport;
@@ -64,7 +63,7 @@ public class MainFragment extends AppDefaultFragment {
     public static final String DATE_TIME_FORMAT_12_HOUR = "MMM d,yyyy h:mm a";
     public static final String DATE_TIME_FORMAT_24_HOUR = "MMM d,yyyy k:mm";
     public static final String FILENAME = "todoitems.json";
-    StoreRetrieveData storeRetrieveData;
+    public static StoreRetrieveData storeRetrieveData;
     public ItemTouchHelper itemTouchHelper;
     CustomRecyclerScrollViewListener customRecyclerScrollViewListener;
     public static final String SHARED_PREF_DATA_SET_CHANGED = "com.example.CAN301.timemanager.datasetchanged";
@@ -155,13 +154,6 @@ public class MainFragment extends AppDefaultFragment {
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_DATA_SET_CHANGED, MODE_PRIVATE);
-        if (sharedPreferences.getBoolean(ReminderFragment.EXIT, false)) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(ReminderFragment.EXIT, false);
-            editor.apply();
-            getActivity().finish();
-        }
         if (getActivity().getSharedPreferences(THEME_PREFERENCES, MODE_PRIVATE).getBoolean(RECREATE_ACTIVITY, false)) {
             SharedPreferences.Editor editor = getActivity().getSharedPreferences(THEME_PREFERENCES, MODE_PRIVATE).edit();
             editor.putBoolean(RECREATE_ACTIVITY, false);
