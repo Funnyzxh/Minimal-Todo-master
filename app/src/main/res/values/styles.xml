@@ -17,7 +17,7 @@
     </style>
 
     <style name="OverflowThreeDotsWhite" parent="Widget.AppCompat.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_menu_overflow_light</item>
+        <item name="android:src">@drawable/setting_image</item>
 
     </style>
 

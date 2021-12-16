@@ -103,7 +103,7 @@
                         android:layout_weight=".4"
                         android:background="@android:color/transparent"
                         android:padding="8dp"
-                        android:src="@drawable/ic_add_alarm_grey_200_24dp" />
+                        android:src="@drawable/clock_image_grey" />
 
                     <TextView
                         android:id="@+id/userToDoRemindMeTextView"
@@ -207,7 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:src="@drawable/ic_send_white_18dp"
+            android:src="@drawable/submit_image"
             app:fabSize="normal"
             app:layout_anchor="@id/editTextParentLinearLayout"
             app:layout_anchorGravity="bottom|right" />
