@@ -386,29 +386,6 @@ public class MainFragment extends AppDefaultFragment {
             }
         }
 
-        public int yearToDay(int m) {
-            int day = 0;
-            for (int i = 2020; i <= m; i++) {
-                if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0) {
-                    day += 1;
-                }
-                day += 365;
-            }
-            return day;
-        }
-
-        public int monthToDay(int m) {
-            int day = 0;
-            for (int i = 1; i <= m; i++) {
-                day += 30;
-                if (i == 1 | i == 3 | i == 5 | i == 7 | i == 8 | i == 10 | i == 12) {
-                    day += 1;
-                } else if (i == 2) {
-                    day -= 2;
-                }
-            }
-            return day;
-        }
 
         @Override
         public int getItemCount() {
