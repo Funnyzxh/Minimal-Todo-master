@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
-import com.example.CAN301.timemanager.Chart.ChartActivity;
+import com.example.CAN301.timemanager.ChartShow.ChartShowActivity;
 import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Settings.SettingsActivity;
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppDefaultActivity {
                 startActivity(intent);
                 return true;
             case R.id.chart:
-                Intent intent_chart = new Intent(this, ChartActivity.class);
+                Intent intent_chart = new Intent(this, ChartShowActivity.class);
                 startActivity(intent_chart);
                 return true;
             default:
