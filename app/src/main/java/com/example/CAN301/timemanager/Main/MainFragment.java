@@ -16,7 +16,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
@@ -24,7 +23,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.CAN301.timemanager.AddToDo.AddToDoActivity;
@@ -138,18 +136,7 @@ public class MainFragment extends AppDefaultFragment {
         mRecyclerView.setAdapter(adapter);
     }
 
-    public static ArrayList<ToDoItem> getLocallyStoredData(StoreRetrieveData storeRetrieveData) {
-        ArrayList<ToDoItem> items = null;
-        try {
-            items = storeRetrieveData.loadFromFile();
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
-        if (items == null) {
-            items = new ArrayList<>();
-        }
-        return items;
-    }
+
 
     @Override
     public void onResume() {
@@ -161,6 +148,8 @@ public class MainFragment extends AppDefaultFragment {
             getActivity().recreate();
         }
     }
+
+
 
     @Override
     public void onStart() {
@@ -174,23 +163,6 @@ public class MainFragment extends AppDefaultFragment {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(CHANGE_OCCURED, false);
             editor.apply();
-        }
-    }
-
-    private void setAlarms() {
-        if (mToDoItemsArrayList != null) {
-            for (ToDoItem item : mToDoItemsArrayList) {
-                if (item.hasReminder() && item.getToDoDate() != null) {
-                    if (item.getToDoDate().before(new Date())) {
-                        item.setToDoDate(null);
-                        continue;
-                    }
-                    Intent i = new Intent(getContext(), TodoNotificationService.class);
-                    i.putExtra(TodoNotificationService.TODOUUID, item.getIdentifier());
-                    i.putExtra(TodoNotificationService.TODOTEXT, item.getToDoText());
-                    createAlarm(i, item.getIdentifier().hashCode(), item.getToDoDate().getTime());
-                }
-            }
         }
     }
 
@@ -223,6 +195,36 @@ public class MainFragment extends AppDefaultFragment {
                 addToDataStore(item);
             }
         }
+    }
+
+    private void setAlarms() {
+        if (mToDoItemsArrayList != null) {
+            for (ToDoItem item : mToDoItemsArrayList) {
+                if (item.hasReminder() && item.getToDoDate() != null) {
+                    if (item.getToDoDate().before(new Date())) {
+                        item.setToDoDate(null);
+                        continue;
+                    }
+                    Intent i = new Intent(getContext(), TodoNotificationService.class);
+                    i.putExtra(TodoNotificationService.TODOUUID, item.getIdentifier());
+                    i.putExtra(TodoNotificationService.TODOTEXT, item.getToDoText());
+                    createAlarm(i, item.getIdentifier().hashCode(), item.getToDoDate().getTime());
+                }
+            }
+        }
+    }
+
+    public static ArrayList<ToDoItem> getLocallyStoredData(StoreRetrieveData storeRetrieveData) {
+        ArrayList<ToDoItem> items = null;
+        try {
+            items = storeRetrieveData.loadFromFile();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+        return items;
     }
 
     private AlarmManager getAlarmManager() {
