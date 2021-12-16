@@ -276,9 +276,6 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
         }
     }
 
-    private String getThemeSet() {
-        return getActivity().getSharedPreferences(MainFragment.THEME_PREFERENCES, MODE_PRIVATE).getString(MainFragment.THEME_SAVED, MainFragment.LIGHTTHEME);
-    }
 
     public void hideKeyboard(EditText et) {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);

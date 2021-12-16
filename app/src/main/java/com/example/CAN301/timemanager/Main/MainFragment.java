@@ -308,34 +308,6 @@ public class MainFragment extends Fragment {
                     }).show();
         }
 
-        public int strMonthToInt(String mon) {
-            if (mon.equals("Jan")) {
-                return 1;
-            } else if (mon.equals("Feb")) {
-                return 2;
-            } else if (mon.equals("Mar")) {
-                return 3;
-            } else if (mon.equals("Apr")) {
-                return 4;
-            } else if (mon.equals("May")) {
-                return 5;
-            } else if (mon.equals("Jun")) {
-                return 6;
-            } else if (mon.equals("Jul")) {
-                return 7;
-            } else if (mon.equals("Aug")) {
-                return 8;
-            } else if (mon.equals("Sep")) {
-                return 9;
-            } else if (mon.equals("Oct")) {
-                return 10;
-            } else if (mon.equals("Nov")) {
-                return 11;
-            } else if (mon.equals("Dec")) {
-                return 12;
-            }
-            return 0;
-        }
 
         @Override
         public BasicListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -375,9 +347,6 @@ public class MainFragment extends Fragment {
             holder.mColorImageView.setImageDrawable(myDrawable);
             if (item.getToDoDate() != null) {
                 String targetTime;
-                String[] array1 = new String[3];
-                String[] array2 = new String[2];
-                String[] array3 = new String[2];
                 if (android.text.format.DateFormat.is24HourFormat(getContext())) {
                     targetTime = AddTaskFragment.formatDate(MainFragment.DATE_TIME_FORMAT_24_HOUR, item.getToDoDate());
                 } else {
@@ -435,13 +404,6 @@ public class MainFragment extends Fragment {
         }
     }
 
-    private void saveDate() {
-        try {
-            storeRetrieveData.saveToFile(mToDoItemsArrayList);
-        } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void onPause() {
