@@ -1,4 +1,4 @@
-package com.example.CAN301.timemanager.AddToDo;
+package com.example.CAN301.timemanager.AddTask;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -42,7 +42,7 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
-public class AddToDoFragment extends AppDefaultFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class AddTaskFragment extends AppDefaultFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     EditText mToDoTextBodyEditText;
     EditText mToDoTextBodyDescription;
     SwitchCompat mToDoDateSwitch;
@@ -197,7 +197,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(AddToDoFragment.this, year, month, day);
+                DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(AddTaskFragment.this, year, month, day);
                 if (theme.equals(MainFragment.DARKTHEME)) {
                     datePickerDialog.setThemeDark(true);
                 }
@@ -220,7 +220,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                 calendar.setTime(date);
                 int hour = calendar.get(Calendar.HOUR_OF_DAY);
                 int minute = calendar.get(Calendar.MINUTE);
-                TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(AddToDoFragment.this, hour, minute, DateFormat.is24HourFormat(getContext()));
+                TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(AddTaskFragment.this, hour, minute, DateFormat.is24HourFormat(getContext()));
                 if (theme.equals(MainFragment.DARKTHEME)) {
                     timePickerDialog.setThemeDark(true);
                 }
@@ -458,7 +458,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         return R.layout.fragment_add_to_do;
     }
 
-    public static AddToDoFragment newInstance() {
-        return new AddToDoFragment();
+    public static AddTaskFragment newInstance() {
+        return new AddTaskFragment();
     }
 }

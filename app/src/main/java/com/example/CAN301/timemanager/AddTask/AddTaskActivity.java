@@ -1,4 +1,4 @@
-package com.example.CAN301.timemanager.AddToDo;
+package com.example.CAN301.timemanager.AddTask;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import com.example.CAN301.timemanager.AppDefault.AppDefaultActivity;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
 
-public class AddToDoActivity extends AppDefaultActivity {
+public class AddTaskActivity extends AppDefaultActivity {
     @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class AddToDoActivity extends AppDefaultActivity {
     @NonNull
     @Override
     protected Fragment createInitialFragment() {
-        return AddToDoFragment.newInstance();
+        return AddTaskFragment.newInstance();
     }
 
     @Override

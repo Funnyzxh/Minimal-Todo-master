@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.CAN301.timemanager.AddToDo.AddToDoActivity"
+        <activity android:name="com.example.CAN301.timemanager.AddTask.AddTaskActivity"
             android:screenOrientation="portrait"
             android:parentActivityName="com.example.CAN301.timemanager.Main.MainActivity"
             />

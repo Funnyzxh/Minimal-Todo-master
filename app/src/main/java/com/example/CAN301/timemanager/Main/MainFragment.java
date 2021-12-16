@@ -25,11 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
-import com.example.CAN301.timemanager.AddToDo.AddToDoActivity;
-import com.example.CAN301.timemanager.AddToDo.AddToDoFragment;
+import com.example.CAN301.timemanager.AddTask.AddTaskActivity;
+import com.example.CAN301.timemanager.AddTask.AddTaskFragment;
 import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
 import com.example.CAN301.timemanager.R;
-import com.example.CAN301.timemanager.Settings.SettingsActivity;
 import com.example.CAN301.timemanager.Utility.ItemTouchHelperClass;
 import com.example.CAN301.timemanager.Utility.RecyclerViewEmptySupport;
 import com.example.CAN301.timemanager.Utility.StoreRetrieveData;
@@ -100,7 +99,7 @@ public class MainFragment extends AppDefaultFragment {
             @SuppressWarnings("deprecation")
             @Override
             public void onClick(View v) {
-                Intent newTodo = new Intent(getContext(), AddToDoActivity.class);
+                Intent newTodo = new Intent(getContext(), AddTaskActivity.class);
                 ToDoItem item = new ToDoItem("", "", false, null);
                 int color = ColorGenerator.MATERIAL.getRandomColor();
                 item.setTodoColor(color);
@@ -369,9 +368,9 @@ public class MainFragment extends AppDefaultFragment {
                 String[] array2 = new String[2];
                 String[] array3 = new String[2];
                 if (android.text.format.DateFormat.is24HourFormat(getContext())) {
-                    targetTime = AddToDoFragment.formatDate(MainFragment.DATE_TIME_FORMAT_24_HOUR, item.getToDoDate());
+                    targetTime = AddTaskFragment.formatDate(MainFragment.DATE_TIME_FORMAT_24_HOUR, item.getToDoDate());
                 } else {
-                    targetTime = AddToDoFragment.formatDate(MainFragment.DATE_TIME_FORMAT_12_HOUR, item.getToDoDate());
+                    targetTime = AddTaskFragment.formatDate(MainFragment.DATE_TIME_FORMAT_12_HOUR, item.getToDoDate());
                 }
                 Date targetDate = item.getToDoDate();
                 long targetMilliseconds = targetDate.getTime();
@@ -435,7 +434,7 @@ public class MainFragment extends AppDefaultFragment {
                     @Override
                     public void onClick(View v) {
                         ToDoItem item = items.get(ViewHolder.this.getAdapterPosition());
-                        Intent i = new Intent(getContext(), AddToDoActivity.class);
+                        Intent i = new Intent(getContext(), AddTaskActivity.class);
                         i.putExtra(TODOITEM, item);
                         startActivityForResult(i, REQUEST_ID_TODO_ITEM);
                     }
