@@ -98,6 +98,7 @@ public class MainFragment extends AppDefaultFragment {
         setAlarms();
         mCoordLayout = (CoordinatorLayout) view.findViewById(R.id.myCoordinatorLayout);
         mAddToDoItemFAB = (FloatingActionButton) view.findViewById(R.id.addToDoItemFAB);
+
         mAddToDoItemFAB.setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("deprecation")
             @Override
@@ -202,17 +203,7 @@ public class MainFragment extends AppDefaultFragment {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.preferences:
-                Intent intent = new Intent(getContext(), SettingsActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
