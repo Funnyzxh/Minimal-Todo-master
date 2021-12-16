@@ -1,6 +1,7 @@
 package com.example.CAN301.timemanager.AddToDo;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -103,14 +104,14 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         mToDoDateSwitch = (SwitchCompat) view.findViewById(R.id.toDoHasDateSwitchCompat);
         mToDoSendFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.makeToDoFloatingActionButton);
         mReminderTextView = (TextView) view.findViewById(R.id.newToDoDateTimeReminderTextView);
-
-        mContainerLayout.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener layoutClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hideKeyboard(mToDoTextBodyEditText);
                 hideKeyboard(mToDoTextBodyDescription);
             }
-        });
+        };
+        mContainerLayout.setOnClickListener(layoutClickListener);
         if (mUserHasReminder && (mUserReminderDate != null)) {
             setReminderTextView();
             setEnterDateLayoutVisibleWithAnimations(true);
@@ -125,7 +126,8 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         InputMethodManager imm = (InputMethodManager) this.getActivity().getSystemService(INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         mToDoTextBodyEditText.setSelection(mToDoTextBodyEditText.length());
-        mToDoTextBodyEditText.addTextChangedListener(new TextWatcher() {
+
+        TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -138,26 +140,15 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
             @Override
             public void afterTextChanged(Editable s) {
             }
-        });
+        };
+        mToDoTextBodyEditText.addTextChangedListener(textWatcher);
         mToDoTextBodyDescription.setText(mUserEnteredDescription);
         mToDoTextBodyDescription.setSelection(mToDoTextBodyDescription.length());
-        mToDoTextBodyDescription.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mUserEnteredDescription = s.toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
+        mToDoTextBodyDescription.addTextChangedListener(textWatcher);
         setEnterDateLayoutVisible(mToDoDateSwitch.isChecked());
         mToDoDateSwitch.setChecked(mUserHasReminder && (mUserReminderDate != null));
-        mToDoDateSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        CompoundButton.OnCheckedChangeListener changeListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (!isChecked) {
@@ -169,8 +160,10 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                 hideKeyboard(mToDoTextBodyEditText);
                 hideKeyboard(mToDoTextBodyDescription);
             }
-        });
-        mToDoSendFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+        };
+        mToDoDateSwitch.setOnCheckedChangeListener(changeListener);
+
+        View.OnClickListener todoClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mToDoTextBodyEditText.length() <= 0) {
@@ -184,9 +177,11 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
                 hideKeyboard(mToDoTextBodyEditText);
                 hideKeyboard(mToDoTextBodyDescription);
             }
-        });
+        };
+        mToDoSendFloatingActionButton.setOnClickListener(todoClickListener);
         mDateEditText = (EditText) view.findViewById(R.id.newTodoDateEditText);
         mTimeEditText = (EditText) view.findViewById(R.id.newTodoTimeEditText);
+
         View.OnClickListener dateClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -210,6 +205,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
             }
         };
         mDateEditText.setOnClickListener(dateClickListener);
+
         View.OnClickListener timeClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -417,49 +413,43 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
     }
 
     public void setEnterDateLayoutVisibleWithAnimations(boolean checked) {
+        Animator.AnimatorListener animatorTrue = new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                mUserDateSpinnerContainingLinearLayout.setVisibility(View.VISIBLE);
+            }
+            @Override
+            public void onAnimationEnd(Animator animation) {
+            }
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        };
+
+        Animator.AnimatorListener animatorFalse = new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mUserDateSpinnerContainingLinearLayout.setVisibility(View.INVISIBLE);
+            }
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        };
+
         if (checked) {
             setReminderTextView();
-            mUserDateSpinnerContainingLinearLayout.animate().alpha(1.0f).setDuration(500).setListener(
-                    new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
-                            mUserDateSpinnerContainingLinearLayout.setVisibility(View.VISIBLE);
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {
-                        }
-                    }
-            );
+            mUserDateSpinnerContainingLinearLayout.animate().alpha(1.0f).setDuration(500).setListener(animatorTrue);
         } else {
-            mUserDateSpinnerContainingLinearLayout.animate().alpha(0.0f).setDuration(500).setListener(
-                    new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            mUserDateSpinnerContainingLinearLayout.setVisibility(View.INVISIBLE);
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {
-                        }
-                    }
-            );
+            mUserDateSpinnerContainingLinearLayout.animate().alpha(0.0f).setDuration(500).setListener(animatorFalse);
         }
     }
 
