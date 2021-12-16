@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
@@ -16,8 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -25,7 +28,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Utility.ToDoItem;
@@ -42,7 +44,7 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
-public class AddTaskFragment extends AppDefaultFragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     EditText mToDoTextBodyEditText;
     EditText mToDoTextBodyDescription;
     SwitchCompat mToDoDateSwitch;
@@ -60,6 +62,16 @@ public class AddTaskFragment extends AppDefaultFragment implements DatePickerDia
     int mUserColor;
     LinearLayout mContainerLayout;
     String theme;
+
+    @Nullable
+    @Override
+    public View onCreateView(
+            LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState
+    ) {
+        return inflater.inflate(R.layout.fragment_add_to_do, container, false);
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -454,8 +466,8 @@ public class AddTaskFragment extends AppDefaultFragment implements DatePickerDia
     }
 
     @Override
-    protected int layoutRes() {
-        return R.layout.fragment_add_to_do;
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     public static AddTaskFragment newInstance() {

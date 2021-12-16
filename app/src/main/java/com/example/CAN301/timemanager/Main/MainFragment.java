@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +28,7 @@ import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 import com.example.CAN301.timemanager.AddTask.AddTaskActivity;
 import com.example.CAN301.timemanager.AddTask.AddTaskFragment;
-import com.example.CAN301.timemanager.AppDefault.AppDefaultFragment;
+
 import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Utility.ItemTouchHelperClass;
 import com.example.CAN301.timemanager.Utility.RecyclerViewEmptySupport;
@@ -47,7 +48,7 @@ import static android.app.Activity.RESULT_CANCELED;
 import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
-public class MainFragment extends AppDefaultFragment {
+public class MainFragment extends Fragment {
     RecyclerViewEmptySupport mRecyclerView;
     FloatingActionButton mAddToDoItemFAB;
     ArrayList<ToDoItem> mToDoItemsArrayList;
@@ -72,6 +73,16 @@ public class MainFragment extends AppDefaultFragment {
     public static final String THEME_SAVED = "com.example.CAN301.timemanager.savedtheme";
     public static final String DARKTHEME = "com.example.CAN301.timemanager.darktheme";
     public static final String LIGHTTHEME = "com.example.CAN301.timemanager.lighttheme";
+
+    @Nullable
+    @Override
+    public View onCreateView(
+            LayoutInflater inflater,
+            @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState
+    ) {
+        return inflater.inflate(R.layout.fragment_main, container, false);
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -448,10 +459,7 @@ public class MainFragment extends AppDefaultFragment {
         mRecyclerView.removeOnScrollListener(customRecyclerScrollViewListener);
     }
 
-    @Override
-    protected int layoutRes() {
-        return R.layout.fragment_main;
-    }
+
 
     public static MainFragment newInstance() {
         return new MainFragment();
