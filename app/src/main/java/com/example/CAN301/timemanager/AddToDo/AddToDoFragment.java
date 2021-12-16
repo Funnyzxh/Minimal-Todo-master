@@ -72,7 +72,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         } else {
             getActivity().setTheme(R.style.CustomStyle_DarkTheme);
         }
-        final Drawable cross = getResources().getDrawable(R.drawable.ic_clear_white_24dp);
+        final Drawable cross = getResources().getDrawable(R.drawable.clear_image);
         if (cross != null) {
             cross.setColorFilter(getResources().getColor(R.color.icons), PorterDuff.Mode.SRC_ATOP);
         }
@@ -93,7 +93,7 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
         reminderIconImageButton = (ImageButton) view.findViewById(R.id.userToDoReminderIconImageButton);
         reminderRemindMeTextView = (TextView) view.findViewById(R.id.userToDoRemindMeTextView);
         if (theme.equals(MainFragment.DARKTHEME)) {
-            reminderIconImageButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_alarm_add_white_24dp));
+            reminderIconImageButton.setImageDrawable(getResources().getDrawable(R.drawable.clock_image_white));
             reminderRemindMeTextView.setTextColor(Color.WHITE);
         }
 

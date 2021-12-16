@@ -28,7 +28,7 @@ public class TodoNotificationService extends IntentService {
         //deleteIntent.putExtra(TODOUUID, mTodoUUID);
         Notification notification = new Notification.Builder(this)
                 .setContentTitle(mTodoText)
-                .setSmallIcon(R.drawable.ic_done_white_24dp)
+                .setSmallIcon(R.drawable.finish_image)
                 .setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_SOUND)
                 //.setDeleteIntent(PendingIntent.getService(this, mTodoUUID.hashCode(), deleteIntent, PendingIntent.FLAG_UPDATE_CURRENT))
