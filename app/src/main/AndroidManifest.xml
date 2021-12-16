@@ -41,12 +41,6 @@
         <activity android:name=".Chart.ChartActivity"
             android:parentActivityName=".Main.MainActivity"
             />
-        <activity android:name=".ChartShow.ShowWeekActivity"
-            android:parentActivityName=".Chart.ChartActivity"
-            />
-        <activity android:name=".ChartShow.ShowMonthActivity"
-            android:parentActivityName=".Chart.ChartActivity"
-            />
         <activity android:name=".ChartShow.ChartShowActivity"
             android:parentActivityName=".Chart.ChartActivity"
             />
