@@ -63,7 +63,7 @@ public class MainFragment extends AppDefaultFragment {
     public static final String DATE_TIME_FORMAT_12_HOUR = "MMM d,yyyy h:mm a";
     public static final String DATE_TIME_FORMAT_24_HOUR = "MMM d,yyyy k:mm";
     public static final String FILENAME = "todoitems.json";
-    StoreRetrieveData storeRetrieveData;
+    public static StoreRetrieveData storeRetrieveData;
     public ItemTouchHelper itemTouchHelper;
     CustomRecyclerScrollViewListener customRecyclerScrollViewListener;
     public static final String SHARED_PREF_DATA_SET_CHANGED = "com.example.CAN301.timemanager.datasetchanged";
