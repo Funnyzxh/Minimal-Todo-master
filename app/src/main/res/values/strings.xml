@@ -7,13 +7,8 @@
     <string name="title">Title</string>
     <string name="remind_me">Remind Me</string>
     <string name="remind_date_and_time">Reminder set for %1$s, %2$s %3$s</string>
-    <string name="done_label">Done</string>
     <string name="date_reminder_default">Today</string>
     <string name="date_error_check_again">The time point is invalid(in the past).</string>
-    <string name="night_mode">Dark Mode</string>
-    <string name="night_mode_on_summary">Dark mode on</string>
-    <string name="night_mode_off_summary">Dark mode off</string>
     <string name="description">Description</string>
-    <string name="remove">Remove</string>
     <string name="todo_error">Please enter a Todo</string>
 </resources>
