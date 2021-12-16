@@ -1,25 +1,20 @@
 package com.example.CAN301.timemanager.Chart;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.CAN301.timemanager.ChartShow.ShowMonthActivity;
 import com.example.CAN301.timemanager.ChartShow.ShowWeekActivity;
-import com.example.CAN301.timemanager.ChartShow.ShowYearActivity;
+import com.example.CAN301.timemanager.ChartShow.ChartShowActivity;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
-import com.example.CAN301.timemanager.Settings.SettingsActivity;
 
 public class ChartActivity extends AppCompatActivity{
     @Override
@@ -70,7 +65,7 @@ public class ChartActivity extends AppCompatActivity{
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_y = new Intent(ChartActivity.this, ShowYearActivity.class);
+                Intent intent_y = new Intent(ChartActivity.this, ChartShowActivity.class);
                 startActivity(intent_y);
             }
         });

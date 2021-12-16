@@ -31,11 +31,6 @@
             />
 
 
-
-        <activity android:name="com.example.CAN301.timemanager.Reminder.ReminderActivity"
-            android:label="@string/app_name"
-            />
-
         <service android:name="com.example.CAN301.timemanager.Utility.TodoNotificationService"
             />
         <service android:name="com.example.CAN301.timemanager.Utility.DeleteNotificationService"
@@ -52,7 +47,7 @@
         <activity android:name=".ChartShow.ShowMonthActivity"
             android:parentActivityName=".Chart.ChartActivity"
             />
-        <activity android:name=".ChartShow.ShowYearActivity"
+        <activity android:name=".ChartShow.ChartShowActivity"
             android:parentActivityName=".Chart.ChartActivity"
             />
 

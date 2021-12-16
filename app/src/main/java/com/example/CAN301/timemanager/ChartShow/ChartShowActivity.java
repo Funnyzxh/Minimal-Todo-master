@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
 
-public class ShowYearActivity extends AppCompatActivity {
+public class ChartShowActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
@@ -27,7 +27,7 @@ public class ShowYearActivity extends AppCompatActivity {
             setTheme(R.style.CustomStyle_DarkTheme);
         }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.chart_year);
+        setContentView(R.layout.chart_show);
         final Drawable backArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         Toolbar toolbar = (Toolbar) findViewById(R.id.yearbar);
         setSupportActionBar(toolbar);
