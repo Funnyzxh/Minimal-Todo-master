@@ -1,11 +1,7 @@
 package com.example.CAN301.timemanager.ChartShow;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
-import com.example.CAN301.timemanager.R;
 
 
 import android.content.Context;
@@ -13,10 +9,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.View;
 
 import com.example.CAN301.timemanager.Main.MainFragment;
-import com.example.CAN301.timemanager.Utility.ToDoItem;
+import com.example.CAN301.timemanager.Utility.TaskItem;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +54,7 @@ public class DrawActivity extends View {
             int top = y + y/12 - x/2;
             int bottom = y + y/12 + x/2;
             Log.d("test","runnedbf");
-            ArrayList<ToDoItem> item= MainFragment.getLocallyStoredData(MainFragment.storeRetrieveData);
+            ArrayList<TaskItem> item= MainFragment.getLocallyStoredData(MainFragment.storeRetrieveData);
             Log.d("test","runnedaf");
             float startAngle = 0;
             float sum=0;
@@ -95,7 +90,7 @@ public class DrawActivity extends View {
             for(int i=0;i< item.size();i++){
                 for(int j=0;j<item.size()-i-1;j++){
                     if(item.get(j).getToDoDate().getTime()<item.get(j+1).getToDoDate().getTime()){
-                        ToDoItem temp=item.get(j+1);
+                        TaskItem temp=item.get(j+1);
                         item.remove(j+1);
                         item.add(j+1,item.get(j));
                         item.remove(j);

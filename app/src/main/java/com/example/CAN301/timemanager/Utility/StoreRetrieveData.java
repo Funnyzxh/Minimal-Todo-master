@@ -25,16 +25,16 @@ public class StoreRetrieveData {
         mFileName = filename;
     }
 
-    public static JSONArray toJSONArray(ArrayList<ToDoItem> items) throws JSONException {
+    public static JSONArray toJSONArray(ArrayList<TaskItem> items) throws JSONException {
         JSONArray jsonArray = new JSONArray();
-        for (ToDoItem item : items) {
+        for (TaskItem item : items) {
             JSONObject jsonObject = item.toJSON();
             jsonArray.put(jsonObject);
         }
         return jsonArray;
     }
 
-    public void saveToFile(ArrayList<ToDoItem> items) throws JSONException, IOException {
+    public void saveToFile(ArrayList<TaskItem> items) throws JSONException, IOException {
         FileOutputStream fileOutputStream;
         OutputStreamWriter outputStreamWriter;
         fileOutputStream = mContext.openFileOutput(mFileName, Context.MODE_PRIVATE);
@@ -44,8 +44,8 @@ public class StoreRetrieveData {
         fileOutputStream.close();
     }
 
-    public ArrayList<ToDoItem> loadFromFile() throws IOException, JSONException {
-        ArrayList<ToDoItem> items = new ArrayList<>();
+    public ArrayList<TaskItem> loadFromFile() throws IOException, JSONException {
+        ArrayList<TaskItem> items = new ArrayList<>();
         BufferedReader bufferedReader = null;
         FileInputStream fileInputStream = null;
         try {
@@ -58,7 +58,7 @@ public class StoreRetrieveData {
             }
             JSONArray jsonArray = (JSONArray) new JSONTokener(builder.toString()).nextValue();
             for (int i = 0; i < jsonArray.length(); i++) {
-                ToDoItem item = new ToDoItem(jsonArray.getJSONObject(i));
+                TaskItem item = new TaskItem(jsonArray.getJSONObject(i));
                 items.add(item);
             }
         } catch (FileNotFoundException fnfe) {

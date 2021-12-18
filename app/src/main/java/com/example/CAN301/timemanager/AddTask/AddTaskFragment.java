@@ -30,7 +30,7 @@ import android.widget.TextView;
 
 import com.example.CAN301.timemanager.Main.MainFragment;
 import com.example.CAN301.timemanager.R;
-import com.example.CAN301.timemanager.Utility.ToDoItem;
+import com.example.CAN301.timemanager.Utility.TaskItem;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -52,7 +52,7 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
     TextView mReminderTextView;
     EditText mDateEditText;
     EditText mTimeEditText;
-    ToDoItem mUserToDoItem;
+    TaskItem mUserTaskItem;
     FloatingActionButton mToDoSendFloatingActionButton;
     String mUserEnteredText;
     String mUserEnteredDescription;
@@ -96,12 +96,12 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
             ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeAsUpIndicator(cross);
         }
-        mUserToDoItem = (ToDoItem) getActivity().getIntent().getSerializableExtra(MainFragment.TODOITEM);
-        mUserEnteredText = mUserToDoItem.getToDoText();
-        mUserEnteredDescription = mUserToDoItem.getmToDoDescription();
-        mUserHasReminder = mUserToDoItem.hasReminder();
-        mUserReminderDate = mUserToDoItem.getToDoDate();
-        mUserColor = mUserToDoItem.getTodoColor();
+        mUserTaskItem = (TaskItem) getActivity().getIntent().getSerializableExtra(MainFragment.TODOITEM);
+        mUserEnteredText = mUserTaskItem.getToDoText();
+        mUserEnteredDescription = mUserTaskItem.getmToDoDescription();
+        mUserHasReminder = mUserTaskItem.hasReminder();
+        mUserReminderDate = mUserTaskItem.getToDoDate();
+        mUserColor = mUserTaskItem.getTodoColor();
         reminderIconImageButton = (ImageButton) view.findViewById(R.id.userToDoReminderIconImageButton);
         reminderRemindMeTextView = (TextView) view.findViewById(R.id.userToDoRemindMeTextView);
         if (theme.equals(MainFragment.DARKTHEME)) {
@@ -199,7 +199,7 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
                 public void onClick(View v) {
                 Date date;
                 hideKeyboard(mToDoTextBodyEditText);
-                if (mUserToDoItem.getToDoDate() != null) {
+                if (mUserTaskItem.getToDoDate() != null) {
                     date = mUserReminderDate;
                 } else {
                     date = new Date();
@@ -223,7 +223,7 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
             public void onClick(View v) {
                 Date date;
                 hideKeyboard(mToDoTextBodyEditText);
-                if (mUserToDoItem.getToDoDate() != null) {
+                if (mUserTaskItem.getToDoDate() != null) {
                     date = mUserReminderDate;
                 } else {
                     date = new Date();
@@ -244,7 +244,7 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
     }
 
     private void setDateAndTimeEditText() {
-        if (mUserToDoItem.hasReminder() && mUserReminderDate != null) {
+        if (mUserTaskItem.hasReminder() && mUserReminderDate != null) {
             String userDate = formatDate("d MMM, yyyy", mUserReminderDate);
             String formatToUse;
             if (DateFormat.is24HourFormat(getContext())) {
@@ -364,11 +364,11 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
         Intent i = new Intent();
         if (mUserEnteredText.length() > 0) {
             String capitalizedString = Character.toUpperCase(mUserEnteredText.charAt(0)) + mUserEnteredText.substring(1);
-            mUserToDoItem.setToDoText(capitalizedString);
-            mUserToDoItem.setmToDoDescription(mUserEnteredDescription);
+            mUserTaskItem.setToDoText(capitalizedString);
+            mUserTaskItem.setmToDoDescription(mUserEnteredDescription);
         } else {
-            mUserToDoItem.setToDoText(mUserEnteredText);
-            mUserToDoItem.setmToDoDescription(mUserEnteredDescription);
+            mUserTaskItem.setToDoText(mUserEnteredText);
+            mUserTaskItem.setmToDoDescription(mUserEnteredDescription);
         }
         if (mUserReminderDate != null) {
             Calendar calendar = Calendar.getInstance();
@@ -376,10 +376,10 @@ public class AddTaskFragment extends Fragment implements DatePickerDialog.OnDate
             calendar.set(Calendar.SECOND, 0);
             mUserReminderDate = calendar.getTime();
         }
-        mUserToDoItem.setHasReminder(mUserHasReminder);
-        mUserToDoItem.setToDoDate(mUserReminderDate);
-        mUserToDoItem.setTodoColor(mUserColor);
-        i.putExtra(MainFragment.TODOITEM, mUserToDoItem);
+        mUserTaskItem.setHasReminder(mUserHasReminder);
+        mUserTaskItem.setToDoDate(mUserReminderDate);
+        mUserTaskItem.setTodoColor(mUserColor);
+        i.putExtra(MainFragment.TODOITEM, mUserTaskItem);
         getActivity().setResult(result, i);
     }
 

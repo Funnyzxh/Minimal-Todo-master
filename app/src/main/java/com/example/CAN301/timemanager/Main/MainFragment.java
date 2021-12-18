@@ -33,8 +33,8 @@ import com.example.CAN301.timemanager.R;
 import com.example.CAN301.timemanager.Utility.ItemTouchHelperClass;
 import com.example.CAN301.timemanager.Utility.RecyclerViewEmptySupport;
 import com.example.CAN301.timemanager.Utility.StoreRetrieveData;
-import com.example.CAN301.timemanager.Utility.ToDoItem;
-import com.example.CAN301.timemanager.Utility.TodoNotificationService;
+import com.example.CAN301.timemanager.Utility.TaskItem;
+import com.example.CAN301.timemanager.Utility.TaskNotificationService;
 
 import org.json.JSONException;
 
@@ -51,12 +51,12 @@ import static android.content.Context.MODE_PRIVATE;
 public class MainFragment extends Fragment {
     RecyclerViewEmptySupport mRecyclerView;
     FloatingActionButton mAddToDoItemFAB;
-    ArrayList<ToDoItem> mToDoItemsArrayList;
+    ArrayList<TaskItem> mTaskItemsArrayList;
     CoordinatorLayout mCoordLayout;
     public static final String TODOITEM = "com.example.CAN301.timemanager.MainActivity";
     MainFragment.BasicListAdapter adapter;
     static final int REQUEST_ID_TODO_ITEM = 100;
-    ToDoItem mJustDeletedToDoItem;
+    TaskItem mJustDeletedTaskItem;
     int mIndexOfDeletedToDoItem;
     public static final String DATE_TIME_FORMAT_12_HOUR = "MMM d,yyyy h:mm a";
     public static final String DATE_TIME_FORMAT_24_HOUR = "MMM d,yyyy k:mm";
@@ -100,8 +100,8 @@ public class MainFragment extends Fragment {
         editor.putBoolean(CHANGE_OCCURED, false);
         editor.apply();
         storeRetrieveData = new StoreRetrieveData(getContext(), FILENAME);
-        mToDoItemsArrayList = getLocallyStoredData(storeRetrieveData);
-        adapter = new MainFragment.BasicListAdapter(mToDoItemsArrayList);
+        mTaskItemsArrayList = getLocallyStoredData(storeRetrieveData);
+        adapter = new MainFragment.BasicListAdapter(mTaskItemsArrayList);
         setAlarms();
         mCoordLayout = (CoordinatorLayout) view.findViewById(R.id.myCoordinatorLayout);
         mAddToDoItemFAB = (FloatingActionButton) view.findViewById(R.id.addToDoItemFAB);
@@ -111,7 +111,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent newTodo = new Intent(getContext(), AddTaskActivity.class);
-                ToDoItem item = new ToDoItem("", "", false, null);
+                TaskItem item = new TaskItem("", "", false, null);
                 int color = ColorGenerator.MATERIAL.getRandomColor();
                 item.setTodoColor(color);
                 newTodo.putExtra(TODOITEM, item);
@@ -168,8 +168,8 @@ public class MainFragment extends Fragment {
         super.onStart();
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(SHARED_PREF_DATA_SET_CHANGED, MODE_PRIVATE);
         if (sharedPreferences.getBoolean(CHANGE_OCCURED, false)) {
-            mToDoItemsArrayList = getLocallyStoredData(storeRetrieveData);
-            adapter = new MainFragment.BasicListAdapter(mToDoItemsArrayList);
+            mTaskItemsArrayList = getLocallyStoredData(storeRetrieveData);
+            adapter = new MainFragment.BasicListAdapter(mTaskItemsArrayList);
             mRecyclerView.setAdapter(adapter);
             setAlarms();
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -184,20 +184,20 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != RESULT_CANCELED && requestCode == REQUEST_ID_TODO_ITEM) {
-            ToDoItem item = (ToDoItem) data.getSerializableExtra(TODOITEM);
+            TaskItem item = (TaskItem) data.getSerializableExtra(TODOITEM);
             if (item.getToDoText().length() <= 0) {
                 return;
             }
             boolean existed = false;
             if (item.hasReminder() && item.getToDoDate() != null) {
-                Intent i = new Intent(getContext(), TodoNotificationService.class);
-                i.putExtra(TodoNotificationService.TODOTEXT, item.getToDoText());
-                i.putExtra(TodoNotificationService.TODOUUID, item.getIdentifier());
+                Intent i = new Intent(getContext(), TaskNotificationService.class);
+                i.putExtra(TaskNotificationService.TODOTEXT, item.getToDoText());
+                i.putExtra(TaskNotificationService.TODOUUID, item.getIdentifier());
                 createAlarm(i, item.getIdentifier().hashCode(), item.getToDoDate().getTime());
             }
-            for (int i = 0; i < mToDoItemsArrayList.size(); i++) {
-                if (item.getIdentifier().equals(mToDoItemsArrayList.get(i).getIdentifier())) {
-                    mToDoItemsArrayList.set(i, item);
+            for (int i = 0; i < mTaskItemsArrayList.size(); i++) {
+                if (item.getIdentifier().equals(mTaskItemsArrayList.get(i).getIdentifier())) {
+                    mTaskItemsArrayList.set(i, item);
                     existed = true;
                     adapter.notifyDataSetChanged();
                     break;
@@ -210,24 +210,24 @@ public class MainFragment extends Fragment {
     }
 
     private void setAlarms() {
-        if (mToDoItemsArrayList != null) {
-            for (ToDoItem item : mToDoItemsArrayList) {
+        if (mTaskItemsArrayList != null) {
+            for (TaskItem item : mTaskItemsArrayList) {
                 if (item.hasReminder() && item.getToDoDate() != null) {
                     if (item.getToDoDate().before(new Date())) {
                         item.setToDoDate(null);
                         continue;
                     }
-                    Intent i = new Intent(getContext(), TodoNotificationService.class);
-                    i.putExtra(TodoNotificationService.TODOUUID, item.getIdentifier());
-                    i.putExtra(TodoNotificationService.TODOTEXT, item.getToDoText());
+                    Intent i = new Intent(getContext(), TaskNotificationService.class);
+                    i.putExtra(TaskNotificationService.TODOUUID, item.getIdentifier());
+                    i.putExtra(TaskNotificationService.TODOTEXT, item.getToDoText());
                     createAlarm(i, item.getIdentifier().hashCode(), item.getToDoDate().getTime());
                 }
             }
         }
     }
 
-    public static ArrayList<ToDoItem> getLocallyStoredData(StoreRetrieveData storeRetrieveData) {
-        ArrayList<ToDoItem> items = null;
+    public static ArrayList<TaskItem> getLocallyStoredData(StoreRetrieveData storeRetrieveData) {
+        ArrayList<TaskItem> items = null;
         try {
             items = storeRetrieveData.loadFromFile();
         } catch (IOException | JSONException e) {
@@ -262,13 +262,13 @@ public class MainFragment extends Fragment {
         }
     }
 
-    private void addToDataStore(ToDoItem item) {
-        mToDoItemsArrayList.add(item);
-        adapter.notifyItemInserted(mToDoItemsArrayList.size() - 1);
+    private void addToDataStore(TaskItem item) {
+        mTaskItemsArrayList.add(item);
+        adapter.notifyItemInserted(mTaskItemsArrayList.size() - 1);
     }
 
     public class BasicListAdapter extends RecyclerView.Adapter<BasicListAdapter.ViewHolder> implements ItemTouchHelperClass.ItemTouchHelperAdapter {
-        ArrayList<ToDoItem> items;
+        ArrayList<TaskItem> items;
 
         @Override
         public void onItemMoved(int fromPosition, int toPosition) {
@@ -286,22 +286,22 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onItemRemoved(final int position) {
-            mJustDeletedToDoItem = items.remove(position);
+            mJustDeletedTaskItem = items.remove(position);
             mIndexOfDeletedToDoItem = position;
-            Intent i = new Intent(getContext(), TodoNotificationService.class);
-            deleteAlarm(i, mJustDeletedToDoItem.getIdentifier().hashCode());
+            Intent i = new Intent(getContext(), TaskNotificationService.class);
+            deleteAlarm(i, mJustDeletedTaskItem.getIdentifier().hashCode());
             notifyItemRemoved(position);
             String toShow = "Todo";
             Snackbar.make(mCoordLayout, "Deleted " + toShow, Snackbar.LENGTH_LONG)
                     .setAction("UNDO", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            items.add(mIndexOfDeletedToDoItem, mJustDeletedToDoItem);
-                            if (mJustDeletedToDoItem.getToDoDate() != null && mJustDeletedToDoItem.hasReminder()) {
-                                Intent i = new Intent(getContext(), TodoNotificationService.class);
-                                i.putExtra(TodoNotificationService.TODOTEXT, mJustDeletedToDoItem.getToDoText());
-                                i.putExtra(TodoNotificationService.TODOUUID, mJustDeletedToDoItem.getIdentifier());
-                                createAlarm(i, mJustDeletedToDoItem.getIdentifier().hashCode(), mJustDeletedToDoItem.getToDoDate().getTime());
+                            items.add(mIndexOfDeletedToDoItem, mJustDeletedTaskItem);
+                            if (mJustDeletedTaskItem.getToDoDate() != null && mJustDeletedTaskItem.hasReminder()) {
+                                Intent i = new Intent(getContext(), TaskNotificationService.class);
+                                i.putExtra(TaskNotificationService.TODOTEXT, mJustDeletedTaskItem.getToDoText());
+                                i.putExtra(TaskNotificationService.TODOUUID, mJustDeletedTaskItem.getIdentifier());
+                                createAlarm(i, mJustDeletedTaskItem.getIdentifier().hashCode(), mJustDeletedTaskItem.getToDoDate().getTime());
                             }
                             notifyItemInserted(mIndexOfDeletedToDoItem);
                         }
@@ -317,7 +317,7 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final BasicListAdapter.ViewHolder holder, final int position) {
-            ToDoItem item = items.get(position);
+            TaskItem item = items.get(position);
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences(THEME_PREFERENCES, MODE_PRIVATE);
             int bgColor;
             int todoTextColor;
@@ -372,7 +372,7 @@ public class MainFragment extends Fragment {
             return items.size();
         }
 
-        BasicListAdapter(ArrayList<ToDoItem> items) {
+        BasicListAdapter(ArrayList<TaskItem> items) {
             this.items = items;
         }
 
@@ -390,7 +390,7 @@ public class MainFragment extends Fragment {
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ToDoItem item = items.get(ViewHolder.this.getAdapterPosition());
+                        TaskItem item = items.get(ViewHolder.this.getAdapterPosition());
                         Intent i = new Intent(getContext(), AddTaskActivity.class);
                         i.putExtra(TODOITEM, item);
                         startActivityForResult(i, REQUEST_ID_TODO_ITEM);
@@ -409,7 +409,7 @@ public class MainFragment extends Fragment {
     public void onPause() {
         super.onPause();
         try {
-            storeRetrieveData.saveToFile(mToDoItemsArrayList);
+            storeRetrieveData.saveToFile(mTaskItemsArrayList);
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }

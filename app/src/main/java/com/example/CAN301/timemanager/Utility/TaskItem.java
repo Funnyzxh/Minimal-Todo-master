@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-public class ToDoItem implements Serializable {
+public class TaskItem implements Serializable {
     String mToDoText;
 
     public boolean getmHasReminder() {
@@ -26,7 +26,7 @@ public class ToDoItem implements Serializable {
     static final String TODODATE = "tododate";
     static final String TODOIDENTIFIER = "todoidentifier";
 
-    public ToDoItem(String todoBody, String tododescription, boolean hasReminder, Date toDoDate) {
+    public TaskItem(String todoBody, String tododescription, boolean hasReminder, Date toDoDate) {
         mToDoText = todoBody;
         mHasReminder = hasReminder;
         mToDoDate = toDoDate;
@@ -35,7 +35,7 @@ public class ToDoItem implements Serializable {
         mTodoIdentifier = UUID.randomUUID();
     }
 
-    public ToDoItem(JSONObject jsonObject) throws JSONException {
+    public TaskItem(JSONObject jsonObject) throws JSONException {
         mToDoText = jsonObject.getString(TODOTEXT);
         mToDoDescription = jsonObject.getString(TODODESCRIPTION);
         mHasReminder = jsonObject.getBoolean(TODOREMINDER);

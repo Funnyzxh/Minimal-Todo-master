@@ -7,14 +7,14 @@ import android.content.Intent;
 import com.example.CAN301.timemanager.R;
 import java.util.UUID;
 
-public class TodoNotificationService extends IntentService {
+public class TaskNotificationService extends IntentService {
     public static final String TODOTEXT = "com.example.CAN301.timemanager.todonotificationservicetext";
     public static final String TODOUUID = "com.example.CAN301.timemanager..todonotificationserviceuuid";
     String mTodoText;
     UUID mTodoUUID;
 
-    public TodoNotificationService() {
-        super("TodoNotificationService");
+    public TaskNotificationService() {
+        super("TaskNotificationService");
     }
 
     @Override
