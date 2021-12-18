@@ -63,7 +63,6 @@ public class MainFragment extends Fragment {
     public static final String FILENAME = "todoitems.json";
     public static StoreRetrieveData storeRetrieveData;
     public ItemTouchHelper itemTouchHelper;
-    CustomRecyclerScrollViewListener customRecyclerScrollViewListener;
     public static final String SHARED_PREF_DATA_SET_CHANGED = "com.example.CAN301.timemanager.datasetchanged";
     public static final String CHANGE_OCCURED = "com.example.CAN301.timemanager.changeoccured";
     int mTheme = -1;
@@ -128,20 +127,6 @@ public class MainFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        customRecyclerScrollViewListener = new CustomRecyclerScrollViewListener() {
-            @Override
-            public void show() {
-                mAddToDoItemFAB.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
-            }
-
-            @Override
-            public void hide() {
-                CoordinatorLayout.LayoutParams lp = (CoordinatorLayout.LayoutParams) mAddToDoItemFAB.getLayoutParams();
-                int fabMargin = lp.bottomMargin;
-                mAddToDoItemFAB.animate().translationY(mAddToDoItemFAB.getHeight() + fabMargin).setInterpolator(new AccelerateInterpolator(2.0f)).start();
-            }
-        };
-        mRecyclerView.addOnScrollListener(customRecyclerScrollViewListener);
         ItemTouchHelper.Callback callback = new ItemTouchHelperClass(adapter);
         itemTouchHelper = new ItemTouchHelper(callback);
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
@@ -418,7 +403,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mRecyclerView.removeOnScrollListener(customRecyclerScrollViewListener);
     }
 
 
