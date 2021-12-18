@@ -10,5 +10,5 @@
     <string name="date_reminder_default">Today</string>
     <string name="date_error_check_again">The time point is invalid(in the past).</string>
     <string name="description">Description</string>
-    <string name="todo_error">Please enter a Title</string>
+    <string name="task_error">Please enter a Title</string>
 </resources>

@@ -21,11 +21,11 @@ public class DeleteNotificationService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         storeRetrieveData = new StoreRetrieveData(this, MainFragment.FILENAME);
-        UUID todoID = (UUID) intent.getSerializableExtra(TaskNotificationService.TODOUUID);
+        UUID taskID = (UUID) intent.getSerializableExtra(TaskNotificationService.TASKUUID);
         mTaskItems = loadData();
         if (mTaskItems != null) {
             for (TaskItem item : mTaskItems) {
-                if (item.getIdentifier().equals(todoID)) {
+                if (item.getIdentifier().equals(taskID)) {
                     mItem = item;
                     break;
                 }

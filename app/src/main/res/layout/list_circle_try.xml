@@ -9,7 +9,7 @@
               xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
-        android:id="@+id/toDoListItemColorImageView"
+        android:id="@+id/taskListItemColorImageView"
         android:gravity="center"
         android:layout_marginLeft="16dp"
         android:layout_width="45dp"
@@ -26,7 +26,7 @@
         <TextView
             android:layout_alignParentTop="true"
             tools:ignore="MissingPrefix"
-            android:id="@+id/toDoListItemTextview"
+            android:id="@+id/taskListItemTextview"
             android:lines="1"
             android:gravity="start|bottom"
             android:textColor="@color/secondary_text"
@@ -38,8 +38,8 @@
             />
 
         <TextView
-            android:layout_below="@id/toDoListItemTextview"
-            android:id="@+id/todoListItemTimeTextView"
+            android:layout_below="@id/taskListItemTextview"
+            android:id="@+id/taskListItemTimeTextView"
             android:text="27 Sept 2015, 22:30"
             android:textColor="?attr/colorAccent"
             android:textSize="12sp"

@@ -8,10 +8,10 @@ import com.example.CAN301.timemanager.R;
 import java.util.UUID;
 
 public class TaskNotificationService extends IntentService {
-    public static final String TODOTEXT = "com.example.CAN301.timemanager.todonotificationservicetext";
-    public static final String TODOUUID = "com.example.CAN301.timemanager..todonotificationserviceuuid";
-    String mTodoText;
-    UUID mTodoUUID;
+    public static final String TASKTEXT = "com.example.CAN301.timemanager.tasknotificationservicetext";
+    public static final String TASKUUID = "com.example.CAN301.timemanager..tasknotificationserviceuuid";
+    String mTaskText;
+    UUID mTaskUUID;
 
     public TaskNotificationService() {
         super("TaskNotificationService");
@@ -19,12 +19,12 @@ public class TaskNotificationService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        mTodoText = intent.getStringExtra(TODOTEXT);
-        mTodoUUID = (UUID) intent.getSerializableExtra(TODOUUID);
+        mTaskText = intent.getStringExtra(TASKTEXT);
+        mTaskUUID = (UUID) intent.getSerializableExtra(TASKUUID);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         Notification notification = new Notification.Builder(this)
-                .setContentTitle(mTodoText)
+                .setContentTitle(mTaskText)
                 .setSmallIcon(R.drawable.finish_image)
                 .setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_SOUND)

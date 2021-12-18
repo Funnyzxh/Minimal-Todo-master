@@ -72,7 +72,7 @@ public class DrawActivity extends View {
             long timenow=now.getTime()/600;
             int newtimes=(int)timenow;
             for(int i=0;i< item.size();i++) {
-                long endtimes=item.get(i).getToDoDate().getTime();
+                long endtimes=item.get(i).getTaskDate().getTime();
                 int endtime=(int)endtimes;
                 if(endtime-newtimes<=0){
                     item.remove(i);
@@ -80,7 +80,7 @@ public class DrawActivity extends View {
                 }
             }
             for(int i=0;i< item.size();i++) {
-                if(item.get(i).getToDoDate().compareTo(now)<=0){
+                if(item.get(i).getTaskDate().compareTo(now)<=0){
                     item.remove(i);
                     i--;
                 }
@@ -89,7 +89,7 @@ public class DrawActivity extends View {
 
             for(int i=0;i< item.size();i++){
                 for(int j=0;j<item.size()-i-1;j++){
-                    if(item.get(j).getToDoDate().getTime()<item.get(j+1).getToDoDate().getTime()){
+                    if(item.get(j).getTaskDate().getTime()<item.get(j+1).getTaskDate().getTime()){
                         TaskItem temp=item.get(j+1);
                         item.remove(j+1);
                         item.add(j+1,item.get(j));
@@ -99,11 +99,11 @@ public class DrawActivity extends View {
                 }
             }
             for(int i=0;i<item.size();i++){
-                long num=item.get(i).getToDoDate().getTime();
+                long num=item.get(i).getTaskDate().getTime();
                 sum=sum+num-currenttime;
             }
             for(int i=0;i< item.size();i++){
-                newsum[i]=1/((item.get(i).getToDoDate().getTime()-currenttime)/sum);
+                newsum[i]=1/((item.get(i).getTaskDate().getTime()-currenttime)/sum);
             }
             for(int i=0;i<item.size();i++){
                 newsum2=newsum2+newsum[i];
@@ -125,9 +125,9 @@ public class DrawActivity extends View {
                         mCancas.drawCircle(x/5+x*3/40,y + y*7/48 + x/2+(item.size()-i)*x/4,40,paint);
                         paint.setColor(Color.BLACK);
                         paint.setTextSize(x/20);
-                        String newtime=sdf.format(item.get(i).getToDoDate());
+                        String newtime=sdf.format(item.get(i).getTaskDate());
                         int b=(int)(newsum[i] *100/ newsum2);
-                        mCancas.drawText(item.get(i).getToDoText()+" END AT "+newtime+" "+b+"%",x/5+x*6/40,y + y*2/12 + x/2+(item.size()-i)*x/4, paint);
+                        mCancas.drawText(item.get(i).getTaskText()+" END AT "+newtime+" "+b+"%",x/5+x*6/40,y + y*2/12 + x/2+(item.size()-i)*x/4, paint);
 
 
                 }

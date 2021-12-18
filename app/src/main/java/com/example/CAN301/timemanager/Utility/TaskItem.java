@@ -8,71 +8,71 @@ import java.util.Date;
 import java.util.UUID;
 
 public class TaskItem implements Serializable {
-    String mToDoText;
+    String mTaskText;
 
     public boolean getmHasReminder() {
         return mHasReminder;
     }
 
     boolean mHasReminder;
-    String mToDoDescription;
-    int mTodoColor;
-    Date mToDoDate;
-    UUID mTodoIdentifier;
-    static final String TODODESCRIPTION = "tododescription";
-    static final String TODOTEXT = "todotext";
-    static final String TODOREMINDER = "todoreminder";
-    static final String TODOCOLOR = "todocolor";
-    static final String TODODATE = "tododate";
-    static final String TODOIDENTIFIER = "todoidentifier";
+    String mTaskDescription;
+    int mTaskColor;
+    Date mTaskDate;
+    UUID mTaskIdentifier;
+    static final String TASKDESCRIPTION = "taskdescription";
+    static final String TASKTEXT = "tasktext";
+    static final String TASKREMINDER = "taskreminder";
+    static final String TASKCOLOR = "taskcolor";
+    static final String TASKDATE = "taskdate";
+    static final String TASKIDENTIFIER = "taskidentifier";
 
-    public TaskItem(String todoBody, String tododescription, boolean hasReminder, Date toDoDate) {
-        mToDoText = todoBody;
+    public TaskItem(String taskBody, String taskdescription, boolean hasReminder, Date taskDate) {
+        mTaskText = taskBody;
         mHasReminder = hasReminder;
-        mToDoDate = toDoDate;
-        mToDoDescription = tododescription;
-        mTodoColor = 1677725;
-        mTodoIdentifier = UUID.randomUUID();
+        mTaskDate = taskDate;
+        mTaskDescription = taskdescription;
+        mTaskColor = 1677725;
+        mTaskIdentifier = UUID.randomUUID();
     }
 
     public TaskItem(JSONObject jsonObject) throws JSONException {
-        mToDoText = jsonObject.getString(TODOTEXT);
-        mToDoDescription = jsonObject.getString(TODODESCRIPTION);
-        mHasReminder = jsonObject.getBoolean(TODOREMINDER);
-        mTodoColor = jsonObject.getInt(TODOCOLOR);
-        mTodoIdentifier = UUID.fromString(jsonObject.getString(TODOIDENTIFIER));
-        if (jsonObject.has(TODODATE)) {
-            mToDoDate = new Date(jsonObject.getLong(TODODATE));
+        mTaskText = jsonObject.getString(TASKTEXT);
+        mTaskDescription = jsonObject.getString(TASKDESCRIPTION);
+        mHasReminder = jsonObject.getBoolean(TASKREMINDER);
+        mTaskColor = jsonObject.getInt(TASKCOLOR);
+        mTaskIdentifier = UUID.fromString(jsonObject.getString(TASKIDENTIFIER));
+        if (jsonObject.has(TASKDATE)) {
+            mTaskDate = new Date(jsonObject.getLong(TASKDATE));
         }
     }
 
     public JSONObject toJSON() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put(TODOTEXT, mToDoText);
-        jsonObject.put(TODOREMINDER, mHasReminder);
-        jsonObject.put(TODODESCRIPTION, mToDoDescription);
-        if (mToDoDate != null) {
-            jsonObject.put(TODODATE, mToDoDate.getTime());
+        jsonObject.put(TASKTEXT, mTaskText);
+        jsonObject.put(TASKREMINDER, mHasReminder);
+        jsonObject.put(TASKDESCRIPTION, mTaskDescription);
+        if (mTaskDate != null) {
+            jsonObject.put(TASKDATE, mTaskDate.getTime());
         }
-        jsonObject.put(TODOCOLOR, mTodoColor);
-        jsonObject.put(TODOIDENTIFIER, mTodoIdentifier.toString());
+        jsonObject.put(TASKCOLOR, mTaskColor);
+        jsonObject.put(TASKIDENTIFIER, mTaskIdentifier.toString());
         return jsonObject;
     }
 
-    public String getmToDoDescription() {
-        return mToDoDescription;
+    public String getmTaskDescription() {
+        return mTaskDescription;
     }
 
-    public void setmToDoDescription(String mToDoDescription) {
-        this.mToDoDescription = mToDoDescription;
+    public void setmTaskDescription(String mTaskDescription) {
+        this.mTaskDescription = mTaskDescription;
     }
 
-    public String getToDoText() {
-        return mToDoText;
+    public String getTaskText() {
+        return mTaskText;
     }
 
-    public void setToDoText(String mToDoText) {
-        this.mToDoText = mToDoText;
+    public void setTaskText(String mTaskText) {
+        this.mTaskText = mTaskText;
     }
 
     public boolean hasReminder() {
@@ -83,23 +83,23 @@ public class TaskItem implements Serializable {
         this.mHasReminder = mHasReminder;
     }
 
-    public Date getToDoDate() {
-        return mToDoDate;
+    public Date getTaskDate() {
+        return mTaskDate;
     }
 
-    public int getTodoColor() {
-        return mTodoColor;
+    public int getTaskColor() {
+        return mTaskColor;
     }
 
-    public void setTodoColor(int mTodoColor) {
-        this.mTodoColor = mTodoColor;
+    public void setTaskColor(int mTaskColor) {
+        this.mTaskColor = mTaskColor;
     }
 
-    public void setToDoDate(Date mToDoDate) {
-        this.mToDoDate = mToDoDate;
+    public void setTaskDate(Date mTaskDate) {
+        this.mTaskDate = mTaskDate;
     }
 
     public UUID getIdentifier() {
-        return mTodoIdentifier;
+        return mTaskIdentifier;
     }
 }

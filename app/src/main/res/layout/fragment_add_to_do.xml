@@ -35,7 +35,7 @@
                     app:hintTextAppearance="@style/FloatingLabelTextAppearance">
 
                     <EditText
-                        android:id="@+id/userToDoEditText"
+                        android:id="@+id/userTaskEditText"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="32dp"
@@ -62,7 +62,7 @@
                 app:hintTextAppearance="@style/FloatingLabelTextAppearance">
 
                 <EditText
-                    android:id="@+id/userToDoDescription"
+                    android:id="@+id/userTaskDescription"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginLeft="32dp"
@@ -79,7 +79,7 @@
             </com.example.CAN301.timemanager.Utility.CustomTextInputLayout>
 
             <LinearLayout
-                android:id="@+id/todoReminderAndDateContainerLayout"
+                android:id="@+id/taskReminderAndDateContainerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.5"
@@ -97,7 +97,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/userToDoReminderIconImageButton"
+                        android:id="@+id/userTaskReminderIconImageButton"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".4"
@@ -106,7 +106,7 @@
                         android:src="@drawable/clock_image_grey" />
 
                     <TextView
-                        android:id="@+id/userToDoRemindMeTextView"
+                        android:id="@+id/userTaskRemindMeTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -120,7 +120,7 @@
                         android:textSize="16sp" />
 
                     <android.support.v7.widget.SwitchCompat
-                        android:id="@+id/toDoHasDateSwitchCompat"
+                        android:id="@+id/taskHasDateSwitchCompat"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -132,7 +132,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/toDoEnterDateLinearLayout"
+                    android:id="@+id/taskEnterDateLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginLeft="36dp"
@@ -151,7 +151,7 @@
 
 
                         <EditText
-                            android:id="@+id/newTodoDateEditText"
+                            android:id="@+id/newTaskDateEditText"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.5"
@@ -171,7 +171,7 @@
                             android:textColor="?attr/colorAccent" />
 
                         <EditText
-                            android:id="@+id/newTodoTimeEditText"
+                            android:id="@+id/newTaskTimeEditText"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -185,7 +185,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/newToDoDateTimeReminderTextView"
+                        android:id="@+id/newTaskDateTimeReminderTextView"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
@@ -202,7 +202,7 @@
         </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/makeToDoFloatingActionButton"
+            android:id="@+id/makeTaskFloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
